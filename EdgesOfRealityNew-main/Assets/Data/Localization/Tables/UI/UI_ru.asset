@@ -19,7 +19,7 @@ MonoBehaviour:
     m_Items: []
   m_TableData:
   - m_Id: 10146760346296320
-    m_Localized: "\u0412\u044B \u043F\u0440\u043E\u0438\u0433\u0440\u0430\u043B\u0438"
+    m_Localized: You Died
     m_Metadata:
       m_Items: []
   - m_Id: 10146562308038656
