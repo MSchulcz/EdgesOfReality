@@ -75,9 +75,16 @@ namespace Metroidvania.Serialization
 
         public void SerializeData()
         {
+            if (_gameData == null)
+            {
+                Debug.LogError("SerializeData failed: _gameData is null");
+                return;
+            }
+
             _gameData.lastSerialization = System.DateTime.Now.ToBinary();
             s_dataHandler.Serialize(_gameData, _gameData.userId);
         }
+
 
         public void DisposeDataInstance()
         {
