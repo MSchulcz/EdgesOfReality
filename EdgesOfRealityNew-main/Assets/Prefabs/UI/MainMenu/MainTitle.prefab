@@ -172,8 +172,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 1.2.0-a.3
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 2b66456002d5e024ba956c16146ab066, type: 2}
-  m_sharedMaterial: {fileID: 8992665694045859754, guid: 2b66456002d5e024ba956c16146ab066, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 56737123b30c08b4b8eab7723ba09157, type: 2}
+  m_sharedMaterial: {fileID: -4352462276211568063, guid: 56737123b30c08b4b8eab7723ba09157, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -450,6 +450,14 @@ PrefabInstance:
       propertyPath: m_fontSize
       value: 36
       objectReference: {fileID: 0}
+    - target: {fileID: 3967159331929190518, guid: 19944c1a492ae6476ba5e9a2b7b1801b, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 56737123b30c08b4b8eab7723ba09157, type: 2}
+    - target: {fileID: 3967159331929190518, guid: 19944c1a492ae6476ba5e9a2b7b1801b, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -4352462276211568063, guid: 56737123b30c08b4b8eab7723ba09157, type: 2}
     - target: {fileID: 8888177970550139003, guid: 19944c1a492ae6476ba5e9a2b7b1801b, type: 3}
       propertyPath: m_Name
       value: StartGame
@@ -597,6 +605,14 @@ PrefabInstance:
       propertyPath: m_fontSize
       value: 36
       objectReference: {fileID: 0}
+    - target: {fileID: 3967159331929190518, guid: 19944c1a492ae6476ba5e9a2b7b1801b, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 56737123b30c08b4b8eab7723ba09157, type: 2}
+    - target: {fileID: 3967159331929190518, guid: 19944c1a492ae6476ba5e9a2b7b1801b, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -4352462276211568063, guid: 56737123b30c08b4b8eab7723ba09157, type: 2}
     - target: {fileID: 8888177970550139003, guid: 19944c1a492ae6476ba5e9a2b7b1801b, type: 3}
       propertyPath: m_Name
       value: Exit
@@ -739,6 +755,14 @@ PrefabInstance:
       propertyPath: m_fontSize
       value: 36
       objectReference: {fileID: 0}
+    - target: {fileID: 3967159331929190518, guid: 19944c1a492ae6476ba5e9a2b7b1801b, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 56737123b30c08b4b8eab7723ba09157, type: 2}
+    - target: {fileID: 3967159331929190518, guid: 19944c1a492ae6476ba5e9a2b7b1801b, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -4352462276211568063, guid: 56737123b30c08b4b8eab7723ba09157, type: 2}
     - target: {fileID: 8888177970550139003, guid: 19944c1a492ae6476ba5e9a2b7b1801b, type: 3}
       propertyPath: m_Name
       value: Credtis
@@ -881,6 +905,14 @@ PrefabInstance:
       propertyPath: m_fontSize
       value: 36
       objectReference: {fileID: 0}
+    - target: {fileID: 3967159331929190518, guid: 19944c1a492ae6476ba5e9a2b7b1801b, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 56737123b30c08b4b8eab7723ba09157, type: 2}
+    - target: {fileID: 3967159331929190518, guid: 19944c1a492ae6476ba5e9a2b7b1801b, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -4352462276211568063, guid: 56737123b30c08b4b8eab7723ba09157, type: 2}
     - target: {fileID: 8888177970550139003, guid: 19944c1a492ae6476ba5e9a2b7b1801b, type: 3}
       propertyPath: m_Name
       value: Options
