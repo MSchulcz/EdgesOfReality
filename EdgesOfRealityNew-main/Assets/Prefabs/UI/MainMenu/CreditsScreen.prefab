@@ -483,9 +483,17 @@ PrefabInstance:
       value: 4.166667
       objectReference: {fileID: 0}
     - target: {fileID: 1669054729851174457, guid: 23f50b1b81db8ae4c90f817f22b3ca03, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 56737123b30c08b4b8eab7723ba09157, type: 2}
+    - target: {fileID: 1669054729851174457, guid: 23f50b1b81db8ae4c90f817f22b3ca03, type: 3}
       propertyPath: m_fontSizeBase
       value: 32
       objectReference: {fileID: 0}
+    - target: {fileID: 1669054729851174457, guid: 23f50b1b81db8ae4c90f817f22b3ca03, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -4352462276211568063, guid: 56737123b30c08b4b8eab7723ba09157, type: 2}
     - target: {fileID: 1669054729851174457, guid: 23f50b1b81db8ae4c90f817f22b3ca03, type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4294967295
