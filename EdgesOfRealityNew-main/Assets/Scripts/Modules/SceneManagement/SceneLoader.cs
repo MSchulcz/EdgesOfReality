@@ -98,16 +98,18 @@ namespace Metroidvania.SceneManagement
 
         private IEnumerator DoSceneLoad(AssetReferenceSceneChannel sceneRef, SceneTransitionData transitionData)
         {
-            SceneChannel scene = null;
-            var op = sceneRef.LoadAssetAsync<SceneChannel>();
-            yield return op;
-            scene = op.Result;
+            if (_sceneChannelAssetHandle.IsValid())
+            {
+                Addressables.Release(_sceneChannelAssetHandle);
+            }
+
+            _sceneChannelAssetHandle = sceneRef.LoadAssetAsync<SceneChannel>();
+            yield return _sceneChannelAssetHandle;
+
+            SceneChannel scene = _sceneChannelAssetHandle.Result;
 
             if (activeScene?.operation.IsValid() == true)
                 OnUnloadScene(scene);
-
-            if (_sceneChannelAssetHandle.IsValid())
-                Addressables.ReleaseInstance(_sceneChannelAssetHandle);
 
             activeScene = scene;
             transitionData.currentScene = activeScene;
