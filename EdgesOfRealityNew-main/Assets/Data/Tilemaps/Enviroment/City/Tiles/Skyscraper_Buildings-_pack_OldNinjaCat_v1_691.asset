@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: Skyscraper_Buildings-_pack_OldNinjaCat_v1_691
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 2062533738, guid: b8d83ac85ef38ce4c953dfcd33ba459e, type: 3}
+  m_Sprite: {fileID: -647990816, guid: b8d83ac85ef38ce4c953dfcd33ba459e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
