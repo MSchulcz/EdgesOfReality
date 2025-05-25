@@ -159,12 +159,12 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 420
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 1
+  spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -422,7 +422,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lucas_die_34
+      name: lucas_die_9
       rect:
         serializedVersion: 2
         x: 5873
@@ -444,7 +444,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lucas_die_9
+      name: lucas_die_10
       rect:
         serializedVersion: 2
         x: 6695
@@ -503,6 +503,7 @@ TextureImporter:
     nameFileIdTable:
       lucas_die_0: 957783301
       lucas_die_1: -596198421
+      lucas_die_10: 629955114
       lucas_die_11: -504611172
       lucas_die_12: 454331679
       lucas_die_13: -1394025698
@@ -524,13 +525,12 @@ TextureImporter:
       lucas_die_3: -546205623
       lucas_die_31: -1685322743
       lucas_die_32: 386672631
-      lucas_die_34: -1093421843
       lucas_die_4: 1912497338
       lucas_die_5: -2130095993
       lucas_die_6: -1414024583
       lucas_die_7: -321047268
       lucas_die_8: 1317091806
-      lucas_die_9: 629955114
+      lucas_die_9: -1093421843
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
