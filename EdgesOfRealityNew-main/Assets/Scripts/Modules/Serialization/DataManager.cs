@@ -77,7 +77,6 @@ namespace Metroidvania.Serialization
         {
             if (_gameData == null)
             {
-                Debug.LogError("SerializeData failed: _gameData is null");
                 return;
             }
 
