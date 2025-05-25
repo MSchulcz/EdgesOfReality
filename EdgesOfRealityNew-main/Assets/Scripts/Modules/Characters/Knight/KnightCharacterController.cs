@@ -291,12 +291,14 @@ namespace Metroidvania.Characters.Knight
             if (transitionData.gameData.ch_knight_died)
             {
                 transitionData.gameData.ch_knight_died = false;
-                lifeAttribute.currentValue = transitionData.gameData.ch_knight_life;
+                lifeAttribute.currentValue = lifeAttribute.maxValue; // умер Ч воскрес с полным HP
             }
             else
             {
-                lifeAttribute.currentValue = transitionData.gameData.ch_knight_life;
+                lifeAttribute.currentValue = transitionData.gameData.ch_knight_life; // выжил Ч продолжаем с тем, что было
             }
+
+
             CharacterStatusBar.instance.SetLife(lifeAttribute.currentValue);
 
             if (spawnPoint.isHorizontalDoor)
@@ -305,8 +307,12 @@ namespace Metroidvania.Characters.Knight
 
         public override void BeforeUnload(SceneLoader.SceneUnloadData unloadData)
         {
-            unloadData.gameData.ch_knight_life = lifeAttribute.currentValue;
+            if (!isDied)
+            {
+                unloadData.gameData.ch_knight_life = lifeAttribute.currentValue;
+            }
             unloadData.gameData.ch_knight_died = isDied;
+
         }
 
 #if UNITY_EDITOR
