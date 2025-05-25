@@ -1,0 +1,538 @@
+fileFormatVersion: 2
+guid: 0803f52fdc8724a4e9f08667a5853e63
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5275437571980677279
+    second: lucas_die_0
+  - first:
+      213: -7621315911172928529
+    second: lucas_die_1
+  - first:
+      213: -2722797894499717432
+    second: lucas_die_2
+  - first:
+      213: 7812897814817996416
+    second: lucas_die_3
+  - first:
+      213: 4863507505713545291
+    second: lucas_die_4
+  - first:
+      213: -4345608727034019168
+    second: lucas_die_5
+  - first:
+      213: 7804092280469536922
+    second: lucas_die_6
+  - first:
+      213: -8984535181928960327
+    second: lucas_die_7
+  - first:
+      213: 7893886689377166557
+    second: lucas_die_8
+  - first:
+      213: -5438371861059278154
+    second: lucas_die_9
+  - first:
+      213: 2182032835141244115
+    second: lucas_die_10
+  - first:
+      213: -7723787612106030503
+    second: lucas_die_11
+  - first:
+      213: -7244231480057318713
+    second: lucas_die_12
+  - first:
+      213: 567874390627037276
+    second: lucas_die_13
+  - first:
+      213: 1862383211731928420
+    second: lucas_die_14
+  - first:
+      213: 5124278941018417927
+    second: lucas_die_15
+  - first:
+      213: 8138345482830671009
+    second: lucas_die_16
+  - first:
+      213: -3823792870834850773
+    second: lucas_die_17
+  - first:
+      213: 4602634523255681101
+    second: lucas_die_18
+  - first:
+      213: 8302614646628180925
+    second: lucas_die_19
+  - first:
+      213: -8897174361759356877
+    second: lucas_die_20
+  - first:
+      213: 1905589868509637493
+    second: lucas_die_21
+  - first:
+      213: -513741645627402303
+    second: lucas_die_22
+  - first:
+      213: -6755463937830760724
+    second: lucas_die_23
+  - first:
+      213: 6011060663839784445
+    second: lucas_die_24
+  - first:
+      213: -4815203244655292793
+    second: lucas_die_25
+  - first:
+      213: 5008691417379054150
+    second: lucas_die_26
+  - first:
+      213: -7545622668379903957
+    second: lucas_die_27
+  - first:
+      213: -429831976430321110
+    second: lucas_die_28
+  - first:
+      213: -8525891129387582270
+    second: lucas_die_29
+  - first:
+      213: -5185267337696770200
+    second: lucas_die_30
+  - first:
+      213: -7159043879397042694
+    second: lucas_die_31
+  - first:
+      213: -5378622190956839409
+    second: lucas_die_32
+  - first:
+      213: -6680378324698262548
+    second: lucas_die_33
+  - first:
+      213: 6076817543807786048
+    second: lucas_die_34
+  - first:
+      213: 14872886546432421
+    second: lucas_die_35
+  - first:
+      213: 7656644415402528995
+    second: lucas_die_36
+  - first:
+      213: 4812140356007444472
+    second: lucas_die_37
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: lucas_die_0
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 147
+        width: 318
+        height: 628
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4b39afc5a3db9f49a219e53fe7fbc34
+      internalID: 957783301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lucas_die_1
+      rect:
+        serializedVersion: 2
+        x: 777
+        y: 147
+        width: 345
+        height: 628
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f33a6717b01e514c977a8a3a6deded9
+      internalID: -596198421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lucas_die_2
+      rect:
+        serializedVersion: 2
+        x: 1253
+        y: 147
+        width: 414
+        height: 616
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c8612f8fa717eb428670834ea1b160b
+      internalID: -141340373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lucas_die_3
+      rect:
+        serializedVersion: 2
+        x: 1797
+        y: 147
+        width: 513
+        height: 616
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d380ef4b46ddfd24da9298a7d20e223f
+      internalID: -546205623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lucas_die_4
+      rect:
+        serializedVersion: 2
+        x: 2404
+        y: 147
+        width: 547
+        height: 616
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6061b111c8b84b64a92e3834af18c33b
+      internalID: 1912497338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lucas_die_5
+      rect:
+        serializedVersion: 2
+        x: 2993
+        y: 147
+        width: 563
+        height: 645
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7bc5161023364bf449c599faaf444f6c
+      internalID: -2130095993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lucas_die_6
+      rect:
+        serializedVersion: 2
+        x: 3713
+        y: 147
+        width: 582
+        height: 667
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7462570652f5a5f488f8549bfa7465a5
+      internalID: -1414024583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lucas_die_7
+      rect:
+        serializedVersion: 2
+        x: 4427
+        y: 147
+        width: 608
+        height: 682
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a57d3125ab5c7fa4ba8fbc8dbd07b866
+      internalID: -321047268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lucas_die_8
+      rect:
+        serializedVersion: 2
+        x: 5227
+        y: 147
+        width: 408
+        height: 418
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b8a9388964b3784fa1c65fd4fd69978
+      internalID: 1317091806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lucas_die_34
+      rect:
+        serializedVersion: 2
+        x: 5873
+        y: 147
+        width: 482
+        height: 368
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1442f41ec12dada4b93dcb933247ecd1
+      internalID: -1093421843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lucas_die_9
+      rect:
+        serializedVersion: 2
+        x: 6695
+        y: 147
+        width: 510
+        height: 198
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5e6045ea9a33504b9b7086583040528
+      internalID: 629955114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lucas_die_11
+      rect:
+        serializedVersion: 2
+        x: 7443
+        y: 147
+        width: 573
+        height: 147
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc0f2a8b0fdcea34792a3b04cdfe26a6
+      internalID: -504611172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      lucas_die_0: 957783301
+      lucas_die_1: -596198421
+      lucas_die_11: -504611172
+      lucas_die_12: 454331679
+      lucas_die_13: -1394025698
+      lucas_die_14: -1755953473
+      lucas_die_15: -1193239946
+      lucas_die_16: 1255862698
+      lucas_die_17: 1401830571
+      lucas_die_19: 1976003265
+      lucas_die_2: -141340373
+      lucas_die_20: -101941359
+      lucas_die_22: 611573116
+      lucas_die_23: -22688158
+      lucas_die_24: 127694806
+      lucas_die_25: -2009607097
+      lucas_die_26: -1687025782
+      lucas_die_27: 150360584
+      lucas_die_28: 1625133087
+      lucas_die_29: -1914642555
+      lucas_die_3: -546205623
+      lucas_die_31: -1685322743
+      lucas_die_32: 386672631
+      lucas_die_34: -1093421843
+      lucas_die_4: 1912497338
+      lucas_die_5: -2130095993
+      lucas_die_6: -1414024583
+      lucas_die_7: -321047268
+      lucas_die_8: 1317091806
+      lucas_die_9: 629955114
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
