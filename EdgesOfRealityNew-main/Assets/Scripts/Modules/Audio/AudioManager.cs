@@ -7,6 +7,11 @@ namespace Metroidvania.Audio
     {
         public static AudioManager instance;
         [SerializeField] private int audioSourcePoolSize = 10;
+
+        [Header("Menu Sounds")]
+        [SerializeField] private AudioObject menuOpenSound;
+        [SerializeField] private AudioObject menuCloseSound;
+
         private List<AudioSource> audioSources = new List<AudioSource>();
         private int currentSourceIndex = 0;
 
@@ -35,7 +40,7 @@ namespace Metroidvania.Audio
         {
             if (audioObject == null || audioObject.clip == null)
             {
-                Debug.LogWarning("AudioObject или AudioClip не указаны!");
+                Debug.LogWarning("AudioObject РёР»Рё AudioClip РЅРµ РЅР°Р·РЅР°С‡РµРЅС‹!");
                 return;
             }
 
@@ -49,7 +54,7 @@ namespace Metroidvania.Audio
         {
             if (audioObject == null || audioObject.clip == null)
             {
-                Debug.LogWarning("AudioObject или AudioClip не указаны!");
+                Debug.LogWarning("AudioObject РёР»Рё AudioClip РЅРµ РЅР°Р·РЅР°С‡РµРЅС‹!");
                 return;
             }
 
@@ -57,6 +62,16 @@ namespace Metroidvania.Audio
             source.transform.position = position;
             audioObject.CloneToSource(source);
             source.Play();
+        }
+
+        public void PlayMenuOpenSound()
+        {
+            PlaySFX(menuOpenSound);
+        }
+
+        public void PlayMenuCloseSound()
+        {
+            PlaySFX(menuCloseSound);
         }
 
         private AudioSource GetFreeAudioSource()
