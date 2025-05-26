@@ -4,6 +4,7 @@ using Metroidvania.Combat;
 using Metroidvania.Entities;
 using Metroidvania.InputSystem;
 using Metroidvania.SceneManagement;
+using Metroidvania.Audio;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -81,12 +82,20 @@ namespace Metroidvania.Characters.Knight
         public InputAction attackAction => InputReader.instance.inputActions.Gameplay.Attack;
         public InputAction jumpAction => InputReader.instance.inputActions.Gameplay.Jump;
 
+        private SFXPlayer sfxPlayer;
+
+        public void PlaySFX(string eventName)
+        {
+            sfxPlayer?.PlaySFX(eventName);
+        }
         private void Awake()
         {
             rb = GetComponent<Rigidbody2D>();
             _collider = GetComponent<BoxCollider2D>();
             _animator = m_gfxGameObject.GetComponent<SpriteSheetAnimator>();
             _renderer = m_gfxGameObject.GetComponent<SpriteRenderer>();
+
+            sfxPlayer = GetComponent<SFXPlayer>();
 
             facingDirection = 1;
 
@@ -161,6 +170,27 @@ namespace Metroidvania.Characters.Knight
 
             _animator.SetSheet(animationHash);
             currentAnimationHash = animationHash;
+
+            if (animationHash == SlideAnimHash)
+            {
+                sfxPlayer?.PlaySFX("Slide");
+            }
+            else if (animationHash == SlideEndAnimHash)
+            {
+                sfxPlayer?.PlaySFX("SlideEnd");
+            }
+            else if (animationHash == WallslideAnimHash)
+            {
+                sfxPlayer?.PlaySFX("Wallslide");
+            }
+            else if (animationHash == RollAnimHash)
+            {
+                sfxPlayer?.PlaySFX("Roll");
+            }
+            else if (animationHash == FallAnimHash)
+            {
+                sfxPlayer?.PlaySFX("Fall");
+            }
         }
 
         public void FlipFacingDirection(float velocityX)
@@ -249,6 +279,7 @@ namespace Metroidvania.Characters.Knight
         private void HandleJump()
         {
             stateMachine.currentState.HandleJump();
+            sfxPlayer?.PlaySFX("Jump");
         }
 
         private void HandleDash()
@@ -259,6 +290,13 @@ namespace Metroidvania.Characters.Knight
         private void HandleAttack()
         {
             stateMachine.currentState.HandleAttack();
+            // Проверяем, какая атака сейчас
+            if (stateMachine.currentState == stateMachine.crouchAttackState)
+                sfxPlayer?.PlaySFX("CrouchAttack");
+            else if (stateMachine.currentState == stateMachine.firstAttackState)
+                sfxPlayer?.PlaySFX("FirstAttack");
+            else if (stateMachine.currentState == stateMachine.secondAttackState)
+                sfxPlayer?.PlaySFX("SecondAttack");
         }
 
         public override void OnTakeHit(EntityHitData hitData)
@@ -270,11 +308,15 @@ namespace Metroidvania.Characters.Knight
             data.onHurtChannel.Raise(this, hitData);
 
             if (lifeAttribute.currentValue <= 0)
+            {
                 stateMachine.EnterState(stateMachine.dieState);
+                sfxPlayer?.PlaySFX("Die");
+            }
             else
             {
                 AddInvincibility(data.defaultInvincibilityTime, true);
                 stateMachine.hurtState.EnterHurtState(hitData);
+                sfxPlayer?.PlaySFX("Hurt");
             }
         }
 

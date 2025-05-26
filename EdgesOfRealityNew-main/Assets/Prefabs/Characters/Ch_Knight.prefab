@@ -24670,6 +24670,7 @@ GameObject:
   - component: {fileID: 7109756644734056124}
   - component: {fileID: 7109756644734056000}
   - component: {fileID: 3447414734016309557}
+  - component: {fileID: -6300261280473000624}
   m_Layer: 8
   m_Name: Ch_Knight
   m_TagString: Player
@@ -24716,6 +24717,7 @@ MonoBehaviour:
     landing: {fileID: 123338560}
     slide: {fileID: 1736033870}
   m_gfxGameObject: {fileID: 7109756645513897341}
+  sfxPlayer: {fileID: 0}
 --- !u!50 &7109756644734056124
 Rigidbody2D:
   serializedVersion: 5
@@ -24802,6 +24804,46 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.4, y: 1.1}
   m_EdgeRadius: 0
+--- !u!114 &-6300261280473000624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7109756644734056125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 908583e24514a0f46a569a78bd7febea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sfxEvents:
+  - eventName: Jump
+    audioObject: {fileID: 11400000, guid: c60b51c87c3817645ae7ea1f8bb12515, type: 2}
+  - eventName: Fall
+    audioObject: {fileID: 11400000, guid: 5b3dad1abbab9df4baad70c088917753, type: 2}
+  - eventName: Run
+    audioObject: {fileID: 11400000, guid: 79069b95992b804448c53a5affb2c89a, type: 2}
+  - eventName: Landing
+    audioObject: {fileID: 0}
+  - eventName: FirstAttack
+    audioObject: {fileID: 11400000, guid: 5b3dad1abbab9df4baad70c088917753, type: 2}
+  - eventName: SecondAttack
+    audioObject: {fileID: 11400000, guid: 5b3dad1abbab9df4baad70c088917753, type: 2}
+  - eventName: CrouchAttack
+    audioObject: {fileID: 11400000, guid: 5b3dad1abbab9df4baad70c088917753, type: 2}
+  - eventName: Roll
+    audioObject: {fileID: 0}
+  - eventName: Slide
+    audioObject: {fileID: 0}
+  - eventName: SlideEnd
+    audioObject: {fileID: 0}
+  - eventName: Wallslide
+    audioObject: {fileID: 0}
+  - eventName: Hurt
+    audioObject: {fileID: 11400000, guid: 4e09dfa46097dfc45a0b89f0689b63fe, type: 2}
+  - eventName: Die
+    audioObject: {fileID: 0}
+  use3DSound: 1
 --- !u!1 &7109756645513897341
 GameObject:
   m_ObjectHideFlags: 0

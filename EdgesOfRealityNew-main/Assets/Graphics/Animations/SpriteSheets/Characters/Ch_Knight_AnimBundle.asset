@@ -123,7 +123,7 @@ MonoBehaviour:
     - {fileID: -941753391, guid: 3320331fd45a3224293a180a75da4e18, type: 3}
   - name: SecondAttack
     hash: -477112770
-    frameRate: 12
+    frameRate: 7
     loop: 0
     sheet:
     - {fileID: 1738587752, guid: e0f423ab257798147a6857b6074d309c, type: 3}

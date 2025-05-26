@@ -121,6 +121,7 @@ namespace Metroidvania.Characters.Knight
             character.SetColliderBounds(character.data.standColliderBounds);
             character.SwitchAnimation(KnightCharacterController.JumpAnimHash);
             character.particles.jump.Play();
+            character.PlaySFX("Jump");
 
             character.rb.linearVelocityY = character.data.jumpHeight;
             _jumpPressed = true;
@@ -173,6 +174,7 @@ namespace Metroidvania.Characters.Knight
             character.SetColliderBounds(character.data.standColliderBounds);
             character.SwitchAnimation(KnightCharacterController.FallAnimHash);
             _fallStartPositionY = character.rb.position.y;
+            character.PlaySFX("Fall");
         }
 
         public override void Transition()
@@ -224,6 +226,7 @@ namespace Metroidvania.Characters.Knight
             character.SetColliderBounds(character.data.standColliderBounds);
             character.SwitchAnimation(KnightCharacterController.RollAnimHash, true);
             character.FlipFacingDirection(character.facingDirection);
+            character.PlaySFX("Roll");
         }
 
         public override void Transition()
@@ -370,6 +373,7 @@ namespace Metroidvania.Characters.Knight
             character.SwitchAnimation(shouldMakeTransition
                 ? KnightCharacterController.CrouchTransitionAnimHash
                 : KnightCharacterController.CrouchWalkAnimHash);
+            character.PlaySFX("Run");
         }
 
         public override void Transition()
@@ -433,6 +437,7 @@ namespace Metroidvania.Characters.Knight
             character.SwitchAnimation(KnightCharacterController.SlideAnimHash, true);
             character.particles.slide.Play();
             character.FlipFacingDirection(character.facingDirection);
+            character.PlaySFX("Slide");
         }
 
         public override void Transition()
@@ -487,6 +492,7 @@ namespace Metroidvania.Characters.Knight
             character.SwitchAnimation(KnightCharacterController.WallslideAnimHash);
             character.particles.wallslide.Play();
             character.rb.linearVelocityX = 0.0f;
+            character.PlaySFX("Wallslide");
         }
 
         public override void Transition()
@@ -533,6 +539,7 @@ namespace Metroidvania.Characters.Knight
                 ParticleSystem.ShapeModule shape = character.particles.walljump.shape;
                 shape.rotation = new Vector3(0, 0, 90 * -character.facingDirection);
                 character.particles.walljump.Play();
+                character.PlaySFX("Jump");
             }
 
             character.rb.linearVelocity = new Vector2(character.data.wallJumpForce.x * character.facingDirection, character.data.wallJumpForce.y);
@@ -691,6 +698,7 @@ namespace Metroidvania.Characters.Knight
 
             character.rb.linearVelocity = Vector2.zero;
             character.rb.AddForce(hitData.knockbackForce, ForceMode2D.Impulse);
+            character.PlaySFX("Hurt");
         }
 
         public override void Transition()
@@ -729,6 +737,7 @@ namespace Metroidvania.Characters.Knight
             character.SetColliderBounds(character.data.crouchColliderBounds);
             character.rb.linearVelocity = Vector2.zero;
             character.data.onDieChannel.Raise(character);
+            character.PlaySFX("Die");
         }
 
         public override void HandleJump() { }
@@ -753,6 +762,7 @@ namespace Metroidvania.Characters.Knight
             _elapsedTime = 0;
             character.SetColliderBounds(character.data.standColliderBounds);
             character.SwitchAnimation(KnightCharacterController.RunAnimHash);
+            character.PlaySFX("Run");
         }
 
         public override void Transition()
