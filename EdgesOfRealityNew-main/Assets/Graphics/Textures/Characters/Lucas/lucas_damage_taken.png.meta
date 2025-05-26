@@ -1,0 +1,347 @@
+fileFormatVersion: 2
+guid: f0385e5f3a0016c4fa19d9e84a2ea1eb
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3564582126185696451
+    second: lucas_damage_taken_0
+  - first:
+      213: -2946115915667579275
+    second: lucas_damage_taken_1
+  - first:
+      213: 8617021673650576995
+    second: lucas_damage_taken_2
+  - first:
+      213: -2693095778013422455
+    second: lucas_damage_taken_3
+  - first:
+      213: 2089628611544873991
+    second: lucas_damage_taken_4
+  - first:
+      213: 3925901800376301460
+    second: lucas_damage_taken_5
+  - first:
+      213: 7138510305733233659
+    second: lucas_damage_taken_6
+  - first:
+      213: -7874608053429153031
+    second: lucas_damage_taken_7
+  - first:
+      213: 5584569808618310049
+    second: lucas_damage_taken_8
+  - first:
+      213: 8289928215121462848
+    second: lucas_damage_taken_9
+  - first:
+      213: 7875007729350638613
+    second: lucas_damage_taken_10
+  - first:
+      213: -4497114808800476938
+    second: lucas_damage_taken_11
+  - first:
+      213: 613681250123579555
+    second: lucas_damage_taken_12
+  - first:
+      213: -17769001161576270
+    second: lucas_damage_taken_13
+  - first:
+      213: 4869460841244014131
+    second: lucas_damage_taken_14
+  - first:
+      213: -4756922772243472760
+    second: lucas_damage_taken_15
+  - first:
+      213: 1018780916921212516
+    second: lucas_damage_taken_16
+  - first:
+      213: 2874288870026810340
+    second: lucas_damage_taken_17
+  - first:
+      213: 1069401141700830010
+    second: lucas_damage_taken_18
+  - first:
+      213: 6529420235573844999
+    second: lucas_damage_taken_19
+  - first:
+      213: -7746300012625318319
+    second: lucas_damage_taken_20
+  - first:
+      213: 5067293130240831000
+    second: lucas_damage_taken_21
+  - first:
+      213: 6374395414687186788
+    second: lucas_damage_taken_22
+  - first:
+      213: -120851005342588185
+    second: lucas_damage_taken_23
+  - first:
+      213: -1856208244464364305
+    second: lucas_damage_taken_24
+  - first:
+      213: -1701745909090093920
+    second: lucas_damage_taken_25
+  - first:
+      213: -8420463248551958145
+    second: lucas_damage_taken_26
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 420
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 0
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: lucas_damage_taken_0
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 10
+        width: 370
+        height: 600
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd5e8f8cb44da324292cbd361f7e8c61
+      internalID: -497610797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lucas_damage_taken_1
+      rect:
+        serializedVersion: 2
+        x: 1480
+        y: 10
+        width: 400
+        height: 600
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa39508b69ff5c04889bc08ade5ed4d4
+      internalID: 1295541576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lucas_damage_taken_2
+      rect:
+        serializedVersion: 2
+        x: 2531
+        y: 7
+        width: 630
+        height: 627
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09188779982bd2a44a1c6e308696a012
+      internalID: 185988933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lucas_damage_taken_3
+      rect:
+        serializedVersion: 2
+        x: 3854
+        y: 12
+        width: 507
+        height: 631
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39a76eccbf60131409e3642a33fe6bfd
+      internalID: -61001041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lucas_damage_taken_4
+      rect:
+        serializedVersion: 2
+        x: 5050
+        y: 10
+        width: 370
+        height: 600
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e230255255692a4286df910ec468e47
+      internalID: -690208097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      lucas_damage_taken_0: -497610797
+      lucas_damage_taken_1: 1295541576
+      lucas_damage_taken_10: -1353072790
+      lucas_damage_taken_11: 1880405649
+      lucas_damage_taken_12: -24912377
+      lucas_damage_taken_13: -1203452458
+      lucas_damage_taken_14: 425141640
+      lucas_damage_taken_15: -2078419876
+      lucas_damage_taken_16: -1605257858
+      lucas_damage_taken_17: 1750082195
+      lucas_damage_taken_18: 1429335743
+      lucas_damage_taken_19: -1496795716
+      lucas_damage_taken_2: 185988933
+      lucas_damage_taken_20: -1620433196
+      lucas_damage_taken_21: -1154867837
+      lucas_damage_taken_22: -1459938249
+      lucas_damage_taken_23: 1567182216
+      lucas_damage_taken_24: 1060205042
+      lucas_damage_taken_25: -922035756
+      lucas_damage_taken_26: -1080688549
+      lucas_damage_taken_3: -61001041
+      lucas_damage_taken_4: -690208097
+      lucas_damage_taken_5: 1621551948
+      lucas_damage_taken_6: 25324504
+      lucas_damage_taken_7: -391102751
+      lucas_damage_taken_9: -253513228
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
