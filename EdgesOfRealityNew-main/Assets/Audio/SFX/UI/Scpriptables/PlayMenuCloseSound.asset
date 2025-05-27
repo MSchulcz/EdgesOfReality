@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0a64cb626a4f4bbca70d501115aa857e, type: 3}
-  m_Name: MenuOpen
+  m_Name: PlayMenuCloseSound
   m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: 5014c803c7aaf644d8061883f8751d81, type: 3}
+  clip: {fileID: 8300000, guid: d693bfcc9d85bc04db4a320a27c958c7, type: 3}
   group: 2
   volume:
     min: 0.75

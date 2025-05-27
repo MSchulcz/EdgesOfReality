@@ -10,6 +10,8 @@ namespace Metroidvania.UI.Menus
         [SerializeField] private CanvasGroup m_mainGroup;
         [SerializeField] private OptionsMenu m_optionsMenu;
 
+        [SerializeField] private UISoundPlayer uiSoundPlayer;
+
         public IMenuScreen activeScreen { get; private set; }
 
         private void Awake()
@@ -31,14 +33,34 @@ namespace Metroidvania.UI.Menus
 
         public void PauseGame()
         {
+            Debug.Log("PauseGame вызван");
             GameManager.instance.PauseGame();
             menuEnabled = true;
             m_titleGroup.FadeGroup(true, Helpers.TransitionTime, SetFirstSelected);
+            if (uiSoundPlayer != null)
+            {
+                Debug.Log("Вызов PlayMenuOpenSound из PauseGame");
+                uiSoundPlayer.PlayMenuOpenSound();
+            }
+            else
+            {
+                Debug.LogWarning("uiSoundPlayer не назначен в GamePauseMenu");
+            }
         }
 
         public void ResumeGame()
         {
+            Debug.Log("ResumeGame вызван");
             m_titleGroup.FadeGroup(false, Helpers.TransitionTime, GameManager.instance.ResumeGame);
+            if (uiSoundPlayer != null)
+            {
+                Debug.Log("Вызов PlayMenuCloseSound из ResumeGame");
+                uiSoundPlayer.PlayMenuCloseSound();
+            }
+            else
+            {
+                Debug.LogWarning("uiSoundPlayer не назначен в GamePauseMenu");
+            }
         }
 
         public void ActiveMenu()

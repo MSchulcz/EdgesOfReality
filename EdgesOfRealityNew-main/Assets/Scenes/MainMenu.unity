@@ -1703,6 +1703,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -169128025636599377, guid: 1ba2c4a593468c34ba5e5fcda5f48310, type: 3}
+      propertyPath: menuOpenSound
+      value: 
+      objectReference: {fileID: 11400000, guid: 4ea996be28d164c468d76fb6bba53e85, type: 2}
+    - target: {fileID: -169128025636599377, guid: 1ba2c4a593468c34ba5e5fcda5f48310, type: 3}
+      propertyPath: menuCloseSound
+      value: 
+      objectReference: {fileID: 11400000, guid: 6818149a9c31c0f439e04dd4e90bac88, type: 2}
+    - target: {fileID: -169128025636599377, guid: 1ba2c4a593468c34ba5e5fcda5f48310, type: 3}
       propertyPath: uiSounds.Array.size
       value: 2
       objectReference: {fileID: 0}
