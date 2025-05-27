@@ -70,17 +70,24 @@ MonoBehaviour:
     - {fileID: 7741333391177991840, guid: 908674eed8303774c8736754d755615b, type: 3}
   - name: Slide
     hash: -1288781466
-    frameRate: 12
+    frameRate: 17
     loop: 0
     sheet:
-    - {fileID: -801678525, guid: 808a878420d7f0040acc9326e68b69f7, type: 3}
-    - {fileID: -757751941, guid: 808a878420d7f0040acc9326e68b69f7, type: 3}
+    - {fileID: 3007748878492833834, guid: bad823e57d7cc944eb46c13cd9b37b03, type: 3}
+    - {fileID: 2873903696190676566, guid: bad823e57d7cc944eb46c13cd9b37b03, type: 3}
+    - {fileID: 7001341606413153143, guid: bad823e57d7cc944eb46c13cd9b37b03, type: 3}
+    - {fileID: 5860584348058338877, guid: bad823e57d7cc944eb46c13cd9b37b03, type: 3}
+    - {fileID: 3100296343919957612, guid: bad823e57d7cc944eb46c13cd9b37b03, type: 3}
+    - {fileID: -5332795966975906172, guid: bad823e57d7cc944eb46c13cd9b37b03, type: 3}
+    - {fileID: 5477964079534446435, guid: bad823e57d7cc944eb46c13cd9b37b03, type: 3}
+    - {fileID: 606823043336286077, guid: bad823e57d7cc944eb46c13cd9b37b03, type: 3}
+    - {fileID: 8103265443038060748, guid: bad823e57d7cc944eb46c13cd9b37b03, type: 3}
   - name: SlideEnd
     hash: 2061248944
     frameRate: 12
     loop: 0
     sheet:
-    - {fileID: 21300000, guid: 2ad8694baad708a418037741867cbd9f, type: 3}
+    - {fileID: 8103265443038060748, guid: bad823e57d7cc944eb46c13cd9b37b03, type: 3}
   - name: CrouchTransition
     hash: -698576047
     frameRate: 12
