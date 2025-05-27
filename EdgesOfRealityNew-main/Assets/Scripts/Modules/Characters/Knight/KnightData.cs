@@ -43,6 +43,14 @@ namespace Metroidvania.Characters.Knight
         [Header("Properties")]
         public CharacterAttributeData<float> lifeAttributeData;
 
+        // Stamina attribute data added
+        public CharacterAttributeData<float> staminaAttributeData;
+
+        [Header("Stamina")]
+        public float staminaRecoveryRate = 5f; // stamina points per second
+        public float staminaConsumptionPerRoll = 20f;
+        public float staminaConsumptionPerSlide = 15f;
+
         [Header("Events")]
         public ObjectEventChannel onDieChannel;
         public CharacterHurtEventChannel onHurtChannel;

@@ -81,6 +81,7 @@ private Vector3 _originalGfxLocalPosition;
         public KnightStateMachine stateMachine { get; private set; }
 
         public CharacterAttribute<float> lifeAttribute { get; private set; }
+        public CharacterAttribute<float> staminaAttribute { get; private set; }
 
         public InputAction crouchAction => InputReader.instance.inputActions.Gameplay.Crouch;
         public InputAction dashAction => InputReader.instance.inputActions.Gameplay.Dash;
@@ -104,7 +105,8 @@ private void  Awake()
 
     sfxPlayer = GetComponent<SFXPlayer>();
 
-    facingDirection = 1;
+            lifeAttribute = new CharacterAttribute<float>(data.lifeAttributeData, at => at.data.startValue + at.currentLevel * at.data.stepPerLevel);
+            staminaAttribute = new CharacterAttribute<float>(data.staminaAttributeData, at => at.data.startValue + at.currentLevel * at.data.stepPerLevel);
 
     lifeAttribute = new CharacterAttribute<float>(data.lifeAttributeData, at => at.data.startValue + at.currentLevel * at.data.stepPerLevel);
 
@@ -116,6 +118,8 @@ private void  Awake()
         {
             CharacterStatusBar.instance.ConnectLife(lifeAttribute);
             CharacterStatusBar.instance.SetLife(lifeAttribute.currentValue);
+            CharacterStatusBar.instance.ConnectStamina(staminaAttribute);
+            CharacterStatusBar.instance.SetStamina(staminaAttribute.currentValue);
         }
 
         private void OnEnable()
@@ -137,6 +141,14 @@ private void  Awake()
         private void Update()
         {
             stateMachine.Update();
+
+            // Recover stamina over time
+            if (staminaAttribute.currentValue < staminaAttribute.maxValue)
+            {
+                staminaAttribute.currentValue += data.staminaRecoveryRate * Time.deltaTime;
+                if (staminaAttribute.currentValue > staminaAttribute.maxValue)
+                    staminaAttribute.currentValue = staminaAttribute.maxValue;
+            }
         }
 
         private void FixedUpdate()

@@ -15,6 +15,12 @@ MonoBehaviour:
   lifeAttributeData:
     startValue: 50
     stepPerLevel: 8
+  staminaAttributeData:
+    startValue: 50
+    stepPerLevel: 8
+  staminaRecoveryRate: 5
+  staminaConsumptionPerRoll: 20
+  staminaConsumptionPerSlide: 15
   onDieChannel: {fileID: 11400000, guid: 5959ba2312347864e967625e5df255a8, type: 2}
   onHurtChannel: {fileID: 11400000, guid: c826486e48eeb4446a81b8567216d8cb, type: 2}
   groundLayer:
