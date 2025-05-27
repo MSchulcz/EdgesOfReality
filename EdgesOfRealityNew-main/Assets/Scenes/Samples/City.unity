@@ -77065,8 +77065,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.56, y: 2.6, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 682179785}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -77116,7 +77116,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 876229294740169370, guid: d043ca019dd776945a8e428a50270c3d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1.125, y: 0.5625}
@@ -77266,19 +77266,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb6bbfb5e30b7d444b5deeb21864d6e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxLife: 10
+  maxLife: 30
   moveSpeed: 1.48
   chaseSpeed: 4.5
   attackDistance: 1
   waitDuration: 1.06
   attack1Damage: 4
-  attack1Force: 2
-  retreat1Force: 0.97
+  attack1Force: 3.99
+  retreat1Force: 1
   attackDelay: 0.21
   attack2Damage: 4
-  attack2Force: 1.01
+  attack2Force: 8.5
   retreat2Force: 2
-  attackBoxSize: {x: 1, y: 1}
+  attackBoxSize: {x: 2, y: 2}
   attackBoxOffset: {x: 0.45, y: 0}
   attackLayerMask:
     serializedVersion: 2

@@ -2,6 +2,7 @@ using UnityEngine;
 using Metroidvania.Combat;
 using Metroidvania.Characters;
 using Metroidvania.Entities;
+using System.Collections;
 
 public class BatBehaviour : MonoBehaviour, IHittableTarget
 {
@@ -23,8 +24,7 @@ public class BatBehaviour : MonoBehaviour, IHittableTarget
     [SerializeField] private Vector2 attackBoxSize = new Vector2(1f, 1f);
     [SerializeField] private Vector2 attackBoxOffset = new Vector2(1f, 0f);
     [SerializeField] private LayerMask attackLayerMask;
-    [SerializeField] private float preAttackDelay = 0.5f; // Задержка перед началом атаки
-
+    [SerializeField] private float preAttackDelay = 0.5f;
 
     [Header("Detection")]
     [SerializeField] private float detectionRadius = 6f;
@@ -49,9 +49,20 @@ public class BatBehaviour : MonoBehaviour, IHittableTarget
     private bool firstAttackDone, secondAttackDone;
     private float preAttackTimer;
     private bool preAttackStarted;
+    private bool isHurt = false;
+
 
     private enum State { Patrol, Chase, Attack, Wait }
     private State state = State.Patrol;
+
+    private int currentAnimState = -1;
+
+    private void SetAnimState(int value)
+    {
+        if (currentAnimState == value) return;
+        currentAnimState = value;
+        anim.SetInteger("State", value);
+    }
 
     private void Awake()
     {
@@ -68,8 +79,15 @@ public class BatBehaviour : MonoBehaviour, IHittableTarget
 
     private void FixedUpdate()
     {
+        if (isHurt)
+        {
+            rb.linearVelocity = Vector2.zero;
+            return;
+        }
+
         DetectPlayer();
         StateMachine();
+        UpdateFacingDirection();
     }
 
     private void StateMachine()
@@ -105,6 +123,7 @@ public class BatBehaviour : MonoBehaviour, IHittableTarget
 
             case State.Wait:
                 rb.linearVelocity = Vector2.zero;
+                SetAnimState(1); // Idle
                 waitTimer -= Time.deltaTime;
                 if (waitTimer <= 0)
                 {
@@ -117,6 +136,7 @@ public class BatBehaviour : MonoBehaviour, IHittableTarget
 
     private void Patrol()
     {
+        SetAnimState(0); // Fly
         if (Vector2.Distance(transform.position, patrolTarget.position) < 0.3f)
         {
             patrolTarget = patrolTarget == pointA ? pointB : pointA;
@@ -127,9 +147,16 @@ public class BatBehaviour : MonoBehaviour, IHittableTarget
 
     private void MoveTowards(Vector2 targetPos, float speed)
     {
-        Vector2 dir = (targetPos - (Vector2)transform.position).normalized/2;
+        Vector2 dir = (targetPos - (Vector2)transform.position).normalized / 2;
         rb.linearVelocity = dir * speed;
-        Flip((int)Mathf.Sign(dir.x));
+    }
+
+    private void UpdateFacingDirection()
+    {
+        if (Mathf.Abs(rb.linearVelocity.x) > 0.1f)
+        {
+            Flip((int)Mathf.Sign(rb.linearVelocity.x));
+        }
     }
 
     private void Flip(int dir)
@@ -160,6 +187,17 @@ public class BatBehaviour : MonoBehaviour, IHittableTarget
 
     private void Attack()
     {
+        if (isHurt)
+        {
+            // сбрасываем атаку
+            firstAttackDone = false;
+            secondAttackDone = false;
+            preAttackStarted = false;
+            state = State.Wait;
+            waitTimer = waitDuration;
+            return;
+        }
+
         if (!target)
         {
             state = State.Patrol;
@@ -170,7 +208,7 @@ public class BatBehaviour : MonoBehaviour, IHittableTarget
         {
             preAttackStarted = true;
             preAttackTimer = preAttackDelay;
-            rb.linearVelocity = Vector2.zero; // Останавливаемся перед атакой
+            SetAnimState(1); // Idle перед атакой
             return;
         }
 
@@ -184,12 +222,15 @@ public class BatBehaviour : MonoBehaviour, IHittableTarget
 
         if (!firstAttackDone)
         {
+            SetAnimState(2); // Attack1
             DoAttack(attack1Damage, attack1Force, retreat1Force);
             firstAttackDone = true;
+            return;
         }
 
         if (!secondAttackDone && attackTimer >= attackDelay)
         {
+            SetAnimState(3); // Attack2
             DoAttack(attack2Damage, attack2Force, retreat2Force);
             secondAttackDone = true;
             waitTimer = waitDuration;
@@ -198,12 +239,11 @@ public class BatBehaviour : MonoBehaviour, IHittableTarget
         }
     }
 
-
     private Collider2D[] _hits = new Collider2D[4];
 
     private void DoAttack(float damage, float force, float retreatForce)
     {
-        LookAtTarget();
+        //LookAtTarget();
 
         Vector2 attackCenter = (Vector2)transform.position + attackBoxOffset * facing;
         Vector2 knockback = new Vector2(force * facing, 1f);
@@ -232,11 +272,64 @@ public class BatBehaviour : MonoBehaviour, IHittableTarget
 
     public void OnTakeHit(CharacterHitData hitData)
     {
+        if (isHurt) return;
+
         life -= hitData.damage;
+
         if (life <= 0)
         {
-            anim.SetTrigger("Die");
-            Destroy(gameObject, 1f);
+            SetAnimState(5); // Die
+            Destroy(gameObject, 2f); // Увеличиваем время до уничтожения
+        }
+        else
+        {
+            Vector2 hurtForce = CalculateHurtForce(hitData);
+            rb.linearVelocity = Vector2.zero;
+            rb.AddForce(hurtForce, ForceMode2D.Impulse);
+
+            StartCoroutine(PlayHurtAndInterrupt());
+        }
+    }
+
+    private Vector2 CalculateHurtForce(CharacterHitData hitData)
+    {
+        if (hitData.character == null)
+            return Vector2.zero;
+
+        float facingFromAttacker = Mathf.Sign(transform.position.x - hitData.character.transform.position.x);
+        Vector2 baseForce = new Vector2(1.5f * facingFromAttacker, 1.5f);
+        float forceMultiplier = hitData.force * Random.Range(1f, 1.5f);
+
+        return baseForce.normalized * forceMultiplier;
+    }
+
+    private IEnumerator PlayHurtAndInterrupt()
+    {
+        isHurt = true;
+
+        rb.linearVelocity = Vector2.zero;
+        SetAnimState(4); // Hurt
+
+        firstAttackDone = false;
+        secondAttackDone = false;
+        preAttackStarted = false;
+
+        state = State.Wait;
+        waitTimer = waitDuration;
+
+        yield return new WaitForSeconds(0.2f); // Увеличиваем длительность анимации Hurt
+
+        isHurt = false;
+
+        if (target && Vector2.Distance(transform.position, target.position) <= detectionRadius)
+        {
+            state = State.Chase;
+        }
+        else
+        {
+            target = null;
+            state = State.Patrol;
+            patrolTarget = GetClosestPatrolPoint();
         }
     }
 
@@ -246,6 +339,7 @@ public class BatBehaviour : MonoBehaviour, IHittableTarget
         float distB = Vector2.Distance(transform.position, pointB.position);
         return distA < distB ? pointA : pointB;
     }
+
 
 #if UNITY_EDITOR
     private void OnDrawGizmosSelected()
@@ -262,7 +356,5 @@ public class BatBehaviour : MonoBehaviour, IHittableTarget
             : (Vector2)transform.position + attackBoxOffset;
         Gizmos.DrawWireCube(attackCenter, attackBoxSize);
     }
-
-
 #endif
 }
