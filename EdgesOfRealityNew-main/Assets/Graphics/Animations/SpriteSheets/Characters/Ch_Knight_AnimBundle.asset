@@ -118,10 +118,10 @@ MonoBehaviour:
     frameRate: 7
     loop: 0
     sheet:
-    - {fileID: 1738587752, guid: e0f423ab257798147a6857b6074d309c, type: 3}
-    - {fileID: -436019140, guid: e0f423ab257798147a6857b6074d309c, type: 3}
-    - {fileID: -532725340, guid: e0f423ab257798147a6857b6074d309c, type: 3}
-    - {fileID: 659045367, guid: e0f423ab257798147a6857b6074d309c, type: 3}
+    - {fileID: 2259794009757400384, guid: e0f423ab257798147a6857b6074d309c, type: 3}
+    - {fileID: 5539028569867939501, guid: e0f423ab257798147a6857b6074d309c, type: 3}
+    - {fileID: -827318476693832070, guid: e0f423ab257798147a6857b6074d309c, type: 3}
+    - {fileID: -4819331184687751149, guid: e0f423ab257798147a6857b6074d309c, type: 3}
   - name: CrouchAttack
     hash: 388873550
     frameRate: 12

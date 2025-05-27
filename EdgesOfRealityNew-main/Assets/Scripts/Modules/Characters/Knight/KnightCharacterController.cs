@@ -88,7 +88,7 @@ namespace Metroidvania.Characters.Knight
         {
             sfxPlayer?.PlaySFX(eventName);
         }
-        private void Awake()
+        private void  Awake() 
         {
             rb = GetComponent<Rigidbody2D>();
             _collider = GetComponent<BoxCollider2D>();
@@ -141,10 +141,17 @@ namespace Metroidvania.Characters.Knight
             stateMachine.PhysicsUpdate();
         }
 
-        private void OnTriggerStay2D(Collider2D other)
+        private void OnTriggerStay2D(Collider2D collision)
         {
-            if (!other.TryGetComponent<ITouchHit>(out ITouchHit touchHit) || (!touchHit.ignoreInvincibility && isInvincible))
+            ITouchHit touchHit = collision.GetComponent<ITouchHit>();
+            if (touchHit == null)
                 return;
+
+            Debug.Log($"[Player] Контакт с объектом {collision.name}");
+
+            if (!touchHit.ignoreInvincibility && isInvincible)
+                return;
+
             OnTakeHit(touchHit.OnHitCharacter(this));
         }
 
@@ -307,6 +314,10 @@ namespace Metroidvania.Characters.Knight
             lifeAttribute.currentValue -= hitData.damage;
             data.onHurtChannel.Raise(this, hitData);
 
+            // Добавляем отбрасывание
+            rb.linearVelocity = Vector2.zero; // Опционально сброс текущей скорости
+            rb.AddForce(hitData.knockbackForce, ForceMode2D.Impulse);
+
             if (lifeAttribute.currentValue <= 0)
             {
                 stateMachine.EnterState(stateMachine.dieState);
@@ -317,6 +328,16 @@ namespace Metroidvania.Characters.Knight
                 AddInvincibility(data.defaultInvincibilityTime, true);
                 stateMachine.hurtState.EnterHurtState(hitData);
                 sfxPlayer?.PlaySFX("Hurt");
+            }
+        }
+
+        public void OnTakeHit(CharacterHitData hitData)
+        {
+            Debug.Log($"Player took {hitData.damage} damage with force {hitData.force} from {hitData.character}");
+            if (rb != null)
+            {
+                float knockbackDirection = Mathf.Sign(transform.position.x - hitData.character.transform.position.x);
+                rb.AddForce(new Vector2(knockbackDirection * hitData.force, 0), ForceMode2D.Impulse);
             }
         }
 

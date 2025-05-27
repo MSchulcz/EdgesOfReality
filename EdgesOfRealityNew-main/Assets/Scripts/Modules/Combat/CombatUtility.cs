@@ -1,3 +1,4 @@
+using Metroidvania.Characters;
 using Metroidvania.Entities;
 using UnityEngine;
 
@@ -27,6 +28,22 @@ namespace Metroidvania.Combat
         public static Vector2 FromFacingDirection(Vector2 knockbackForce, float facingDirection)
         {
             return new Vector2(knockbackForce.x * Mathf.Sign(facingDirection), knockbackForce.y);
+        }
+    }
+
+    [RequireComponent(typeof(Collider2D))]
+    public class EnemyTouchDamage : MonoBehaviour, ITouchHit
+    {
+        [Header("Damage Settings")]
+        public float damage = 1f;
+        public Vector2 knockbackForce = new Vector2(5f, 3f);
+        public bool ignoreInvincibility => false; // true Ч пробивает неу€звимость
+
+        public EntityHitData OnHitCharacter(CharacterBase characterController)
+        {
+            Debug.Log($"[EnemyTouchDamage] ¬раг нанес урон: {damage}");
+            return new EntityHitData(damage, knockbackForce);
+
         }
     }
 }

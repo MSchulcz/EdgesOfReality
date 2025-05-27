@@ -14,6 +14,7 @@ namespace Metroidvania.Entities
         {
             this.damage = damage;
             this.knockbackForce = knockbackForce;
+
         }
     }
 }
