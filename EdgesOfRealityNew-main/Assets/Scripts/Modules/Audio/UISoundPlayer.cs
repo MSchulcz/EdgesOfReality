@@ -16,12 +16,10 @@ public class UISoundPlayer : MonoBehaviour, IPointerEnterHandler, IPointerClickH
     // воспроизведение звука по имени события
     public void PlaySound(string eventName)
     {
-        Debug.Log($"Попытка воспроизвести звук UI события: {eventName}");
         foreach (var sound in uiEventSounds)
         {
             if (sound.eventName == eventName)
             {
-                Debug.Log($"Найден звук для события {eventName}, воспроизведение.");
                 if (AudioManager.instance != null)
                 {
                     AudioManager.instance.PlaySFX(sound.audioObject); // 2D звук для UI
@@ -39,14 +37,12 @@ public class UISoundPlayer : MonoBehaviour, IPointerEnterHandler, IPointerClickH
     // воспроизведение звука открытия меню
     public void PlayMenuOpenSound()
     {
-        Debug.Log("Вызов PlayMenuOpenSound");
         PlaySound("MenuOpen");
     }
 
     // воспроизведение звука закрытия меню
     public void PlayMenuCloseSound()
     {
-        Debug.Log("Вызов PlayMenuCloseSound");
         PlaySound("MenuClose");
     }
 

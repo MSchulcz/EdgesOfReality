@@ -26,7 +26,11 @@ MonoBehaviour:
       position: {x: 6, y: 4.25}
       facingRight: 0
       doFadeWalk: 0
-    spawnPoints: []
+    spawnPoints:
+    - key: 
+      position: {x: -10, y: 0}
+      facingRight: 0
+      doFadeWalk: 0
   channelReference:
     m_AssetGUID: e8b6ef2bc32665b49a921278c0a67eef
     m_SubObjectName: 

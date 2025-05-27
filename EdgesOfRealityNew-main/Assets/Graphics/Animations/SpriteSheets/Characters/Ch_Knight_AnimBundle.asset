@@ -136,9 +136,8 @@ MonoBehaviour:
     frameRate: 12
     loop: 1
     sheet:
-    - {fileID: -186325655, guid: e316cd47415b08846a23e00a259a227e, type: 3}
-    - {fileID: -31735404, guid: e316cd47415b08846a23e00a259a227e, type: 3}
-    - {fileID: -1231373769, guid: e316cd47415b08846a23e00a259a227e, type: 3}
+    - {fileID: -8196358214803950822, guid: f62ad530c1b1437459b987f3695780f5, type: 3}
+    - {fileID: 9199807542805101075, guid: f62ad530c1b1437459b987f3695780f5, type: 3}
   - name: Hurt
     hash: 1740614436
     frameRate: 12
