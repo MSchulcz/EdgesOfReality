@@ -88,7 +88,7 @@ namespace Metroidvania.Characters.Knight
 
         public bool TryEnterAttackState()
         {
-            if (character.attackAction.WasPerformedThisFrame() && character.collisionChecker.isGrounded)
+            if (character.attackAction.WasPerformedThisFrame())
             {
                 EnterState(KnightAttackState.StepAttack(character.data.attackComboMaxDelay) == 1 ? firstAttackState : secondAttackState);
                 return true;

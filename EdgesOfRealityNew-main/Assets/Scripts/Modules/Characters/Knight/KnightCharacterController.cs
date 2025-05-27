@@ -16,6 +16,9 @@ namespace Metroidvania.Characters.Knight
         public static readonly int IdleAnimHash = Animator.StringToHash("Idle");
         public static readonly int RunAnimHash = Animator.StringToHash("Run");
 
+        public GameObject GfxGameObject => m_gfxGameObject;
+        public Vector3 OriginalGfxLocalPosition => _originalGfxLocalPosition;
+
         public static readonly int JumpAnimHash = Animator.StringToHash("Jump");
         public static readonly int FallAnimHash = Animator.StringToHash("Fall");
 
@@ -51,9 +54,11 @@ namespace Metroidvania.Characters.Knight
 
         public Rigidbody2D rb { get; private set; }
 
-        private SpriteSheetAnimator _animator;
-        private BoxCollider2D _collider;
-        private SpriteRenderer _renderer;
+private SpriteSheetAnimator _animator;
+private BoxCollider2D _collider;
+private SpriteRenderer _renderer;
+
+private Vector3 _originalGfxLocalPosition;
 
         private int currentAnimationHash { get; set; }
 
@@ -88,22 +93,24 @@ namespace Metroidvania.Characters.Knight
         {
             sfxPlayer?.PlaySFX(eventName);
         }
-        private void  Awake() 
-        {
-            rb = GetComponent<Rigidbody2D>();
-            _collider = GetComponent<BoxCollider2D>();
-            _animator = m_gfxGameObject.GetComponent<SpriteSheetAnimator>();
-            _renderer = m_gfxGameObject.GetComponent<SpriteRenderer>();
+private void  Awake() 
+{
+    rb = GetComponent<Rigidbody2D>();
+    _collider = GetComponent<BoxCollider2D>();
+    _animator = m_gfxGameObject.GetComponent<SpriteSheetAnimator>();
+    _renderer = m_gfxGameObject.GetComponent<SpriteRenderer>();
 
-            sfxPlayer = GetComponent<SFXPlayer>();
+    _originalGfxLocalPosition = m_gfxGameObject.transform.localPosition;
 
-            facingDirection = 1;
+    sfxPlayer = GetComponent<SFXPlayer>();
 
-            lifeAttribute = new CharacterAttribute<float>(data.lifeAttributeData, at => at.data.startValue + at.currentLevel * at.data.stepPerLevel);
+    facingDirection = 1;
 
-            attackHits = new Collider2D[8];
-            stateMachine = new KnightStateMachine(this);
-        }
+    lifeAttribute = new CharacterAttribute<float>(data.lifeAttributeData, at => at.data.startValue + at.currentLevel * at.data.stepPerLevel);
+
+    attackHits = new Collider2D[8];
+    stateMachine = new KnightStateMachine(this);
+}
 
         private void Start()
         {
@@ -147,7 +154,7 @@ namespace Metroidvania.Characters.Knight
             if (touchHit == null)
                 return;
 
-            Debug.Log($"[Player] Контакт с объектом {collision.name}");
+            Debug.Log($"[Player] пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ {collision.name}");
 
             if (!touchHit.ignoreInvincibility && isInvincible)
                 return;
@@ -206,12 +213,12 @@ namespace Metroidvania.Characters.Knight
                 Flip();
         }
 
-        public void SetColliderBounds(KnightData.ColliderBounds colliderBounds)
-        {
-            colliderBoundsSource = colliderBounds;
-            _collider.offset = colliderBounds.bounds.min;
-            _collider.size = colliderBounds.bounds.size;
-        }
+public void SetColliderBounds(KnightData.ColliderBounds colliderBounds)
+{
+    colliderBoundsSource = colliderBounds;
+    _collider.offset = colliderBounds.bounds.min;
+    _collider.size = colliderBounds.bounds.size;
+}
 
         public void AddInvincibility(float time, bool shouldAnim)
         {
@@ -297,7 +304,7 @@ namespace Metroidvania.Characters.Knight
         private void HandleAttack()
         {
             stateMachine.currentState.HandleAttack();
-            // Проверяем, какая атака сейчас
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
             if (stateMachine.currentState == stateMachine.crouchAttackState)
                 sfxPlayer?.PlaySFX("CrouchAttack");
             else if (stateMachine.currentState == stateMachine.firstAttackState)
@@ -314,8 +321,8 @@ namespace Metroidvania.Characters.Knight
             lifeAttribute.currentValue -= hitData.damage;
             data.onHurtChannel.Raise(this, hitData);
 
-            // Добавляем отбрасывание
-            rb.linearVelocity = Vector2.zero; // Опционально сброс текущей скорости
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+            rb.linearVelocity = Vector2.zero; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             rb.AddForce(hitData.knockbackForce, ForceMode2D.Impulse);
 
             if (lifeAttribute.currentValue <= 0)
@@ -354,11 +361,11 @@ namespace Metroidvania.Characters.Knight
             if (transitionData.gameData.ch_knight_died)
             {
                 transitionData.gameData.ch_knight_died = false;
-                lifeAttribute.currentValue = lifeAttribute.maxValue; // умер — воскрес с полным HP
+                lifeAttribute.currentValue = lifeAttribute.maxValue; // пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ HP
             }
             else
             {
-                lifeAttribute.currentValue = transitionData.gameData.ch_knight_life; // выжил — продолжаем с тем, что было
+                lifeAttribute.currentValue = transitionData.gameData.ch_knight_life; // пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
             }
 
 
