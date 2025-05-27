@@ -105,6 +105,7 @@ private void  Awake()
 
     sfxPlayer = GetComponent<SFXPlayer>();
 
+    facingDirection = 1;
             lifeAttribute = new CharacterAttribute<float>(data.lifeAttributeData, at => at.data.startValue + at.currentLevel * at.data.stepPerLevel);
             staminaAttribute = new CharacterAttribute<float>(data.staminaAttributeData, at => at.data.startValue + at.currentLevel * at.data.stepPerLevel);
 

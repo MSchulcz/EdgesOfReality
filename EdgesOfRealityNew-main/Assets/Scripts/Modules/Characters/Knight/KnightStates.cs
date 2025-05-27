@@ -641,7 +641,15 @@ public override void Exit()
             _triggered = false;
             _currentExitCommand = ExitAttackCommand.None;
 
-            _storedVelocityX = character.rb.linearVelocityX;
+            // Reset stored velocity if previous state is not jump
+            if (previousState is KnightJumpState)
+            {
+                _storedVelocityX = character.rb.linearVelocityX;
+            }
+            else
+            {
+                _storedVelocityX = 0f;
+            }
 
             character.SetColliderBounds(colliderBounds);
             character.SwitchAnimation(animHash, true);
