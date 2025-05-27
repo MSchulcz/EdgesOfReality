@@ -59,18 +59,15 @@ MonoBehaviour:
     frameRate: 16
     loop: 0
     sheet:
-    - {fileID: 692556929, guid: a6da9560d22e3c44a9d01ca20f23775c, type: 3}
-    - {fileID: 345016030, guid: a6da9560d22e3c44a9d01ca20f23775c, type: 3}
-    - {fileID: 353168503, guid: a6da9560d22e3c44a9d01ca20f23775c, type: 3}
-    - {fileID: 1001830729, guid: a6da9560d22e3c44a9d01ca20f23775c, type: 3}
-    - {fileID: 1066047814, guid: a6da9560d22e3c44a9d01ca20f23775c, type: 3}
-    - {fileID: 1083678825, guid: a6da9560d22e3c44a9d01ca20f23775c, type: 3}
-    - {fileID: 1537369072, guid: a6da9560d22e3c44a9d01ca20f23775c, type: 3}
-    - {fileID: 1753145807, guid: a6da9560d22e3c44a9d01ca20f23775c, type: 3}
-    - {fileID: 1321932650, guid: a6da9560d22e3c44a9d01ca20f23775c, type: 3}
-    - {fileID: 792998826, guid: a6da9560d22e3c44a9d01ca20f23775c, type: 3}
-    - {fileID: -584562468, guid: a6da9560d22e3c44a9d01ca20f23775c, type: 3}
-    - {fileID: 121285680, guid: a6da9560d22e3c44a9d01ca20f23775c, type: 3}
+    - {fileID: -1635449550619391348, guid: 908674eed8303774c8736754d755615b, type: 3}
+    - {fileID: -4647370443940786383, guid: 908674eed8303774c8736754d755615b, type: 3}
+    - {fileID: -347463945435966091, guid: 908674eed8303774c8736754d755615b, type: 3}
+    - {fileID: -1233244769112712428, guid: 908674eed8303774c8736754d755615b, type: 3}
+    - {fileID: 8321575856677002402, guid: 908674eed8303774c8736754d755615b, type: 3}
+    - {fileID: -4307561521486346195, guid: 908674eed8303774c8736754d755615b, type: 3}
+    - {fileID: 2484720115429162404, guid: 908674eed8303774c8736754d755615b, type: 3}
+    - {fileID: 1889638101156521268, guid: 908674eed8303774c8736754d755615b, type: 3}
+    - {fileID: 7741333391177991840, guid: 908674eed8303774c8736754d755615b, type: 3}
   - name: Slide
     hash: -1288781466
     frameRate: 12
@@ -97,20 +94,15 @@ MonoBehaviour:
     frameRate: 12
     loop: 1
     sheet:
-    - {fileID: 415849796, guid: d5efa4138715262479c56c43c608b666, type: 3}
+    - {fileID: 2885910049089264007, guid: 5d8f11722753650429b53ded70c61cbc, type: 3}
   - name: CrouchWalk
     hash: -737396462
     frameRate: 12
     loop: 1
     sheet:
-    - {fileID: -1306259526, guid: 1219bea10f14f1a44a58a06294184986, type: 3}
-    - {fileID: 1942516792, guid: 1219bea10f14f1a44a58a06294184986, type: 3}
-    - {fileID: -1387195391, guid: 1219bea10f14f1a44a58a06294184986, type: 3}
-    - {fileID: -739670103, guid: 1219bea10f14f1a44a58a06294184986, type: 3}
-    - {fileID: 1076280269, guid: 1219bea10f14f1a44a58a06294184986, type: 3}
-    - {fileID: -29400699, guid: 1219bea10f14f1a44a58a06294184986, type: 3}
-    - {fileID: -1856976218, guid: 1219bea10f14f1a44a58a06294184986, type: 3}
-    - {fileID: 420030574, guid: 1219bea10f14f1a44a58a06294184986, type: 3}
+    - {fileID: -882543076802256426, guid: 5d8f11722753650429b53ded70c61cbc, type: 3}
+    - {fileID: 4607085315326281805, guid: 5d8f11722753650429b53ded70c61cbc, type: 3}
+    - {fileID: 7611169083590386086, guid: 5d8f11722753650429b53ded70c61cbc, type: 3}
   - name: FirstAttack
     hash: 1837845836
     frameRate: 12
@@ -135,10 +127,10 @@ MonoBehaviour:
     frameRate: 12
     loop: 0
     sheet:
-    - {fileID: 61397137, guid: 6c81fa82565aaa74298170492318ee72, type: 3}
-    - {fileID: 1674432000, guid: 6c81fa82565aaa74298170492318ee72, type: 3}
-    - {fileID: 1000786232, guid: 6c81fa82565aaa74298170492318ee72, type: 3}
-    - {fileID: 1330068444, guid: 6c81fa82565aaa74298170492318ee72, type: 3}
+    - {fileID: -5829341010889630000, guid: 100f0a17ba05a82418921fc907271c1e, type: 3}
+    - {fileID: -3541263761699531856, guid: 100f0a17ba05a82418921fc907271c1e, type: 3}
+    - {fileID: -36993308109921639, guid: 100f0a17ba05a82418921fc907271c1e, type: 3}
+    - {fileID: 8437567913615112491, guid: 100f0a17ba05a82418921fc907271c1e, type: 3}
   - name: Wallslide
     hash: 1805019387
     frameRate: 12

@@ -76801,6 +76801,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1636962499}
   m_CullTransparentMesh: 1
+--- !u!1 &1659979613
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1659979615}
+  - component: {fileID: 1659979614}
+  m_Layer: 0
+  m_Name: UISoundPlayer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1659979614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1659979613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9723bc113849a6043a15d7971e979f53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiEventSounds:
+  - eventName: MenuOpen
+    audioObject: {fileID: 11400000, guid: 6818149a9c31c0f439e04dd4e90bac88, type: 2}
+  - eventName: MenuClose
+    audioObject: {fileID: 11400000, guid: 4ea996be28d164c468d76fb6bba53e85, type: 2}
+--- !u!4 &1659979615
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1659979613}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -9.896176, y: 0.49868217, z: -0.017608868}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1722829492
 GameObject:
   m_ObjectHideFlags: 0
@@ -77204,7 +77253,7 @@ PrefabInstance:
     - target: {fileID: 1334992749502967967, guid: 11cd0fc535a25e447a5d9f0c58261dbb, type: 3}
       propertyPath: uiSoundPlayer
       value: 
-      objectReference: {fileID: 475455442}
+      objectReference: {fileID: 1659979614}
     - target: {fileID: 3582552263140803940, guid: 11cd0fc535a25e447a5d9f0c58261dbb, type: 3}
       propertyPath: Composition.ScreenPosition.x
       value: 0.000520844
@@ -78346,3 +78395,4 @@ SceneRoots:
   - {fileID: 1420213965}
   - {fileID: 1722829496}
   - {fileID: 475455440}
+  - {fileID: 1659979615}

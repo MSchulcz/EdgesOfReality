@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a64cb626a4f4bbca70d501115aa857e, type: 3}
   m_Name: PlayMenuCloseSound
   m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: d693bfcc9d85bc04db4a320a27c958c7, type: 3}
+  clip: {fileID: 8300000, guid: 678dd6a515ff9bf4aab6d303b07c18fa, type: 3}
   group: 2
   volume:
     min: 0.75
