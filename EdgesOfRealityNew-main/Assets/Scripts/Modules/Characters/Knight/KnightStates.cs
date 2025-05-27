@@ -216,12 +216,22 @@ namespace Metroidvania.Characters.Knight
 
         public override bool CanEnter()
         {
-            return character.collisionChecker.isGrounded && !machine.currentState.isCrouchState && character.dashAction.WasPerformedThisFrame() && !isInCooldown;
+            // Check stamina before allowing roll
+            return character.collisionChecker.isGrounded 
+                && !machine.currentState.isCrouchState 
+                && character.dashAction.WasPerformedThisFrame() 
+                && !isInCooldown
+                && character.staminaAttribute.currentValue >= character.data.staminaConsumptionPerRoll;
         }
 
         public override void Enter(KnightStateBase previousState)
         {
             _elapsedTime = 0;
+
+            // Consume stamina on roll start
+            character.staminaAttribute.currentValue -= character.data.staminaConsumptionPerRoll;
+            if (character.staminaAttribute.currentValue < 0)
+                character.staminaAttribute.currentValue = 0;
 
             character.SetColliderBounds(character.data.standColliderBounds);
             character.SwitchAnimation(KnightCharacterController.RollAnimHash, true);
@@ -425,13 +435,23 @@ namespace Metroidvania.Characters.Knight
 
         public override bool CanEnter()
         {
-            return character.collisionChecker.isGrounded && machine.currentState.isCrouchState && character.dashAction.WasPerformedThisFrame() && !isInCooldown;
+            // Check stamina before allowing slide
+            return character.collisionChecker.isGrounded 
+                && machine.currentState.isCrouchState 
+                && character.dashAction.WasPerformedThisFrame() 
+                && !isInCooldown
+                && character.staminaAttribute.currentValue >= character.data.staminaConsumptionPerSlide;
         }
 
         public override void Enter(KnightStateBase previousState)
         {
             _elapsedTime = 0;
             _inQuittingAnim = false;
+
+            // Consume stamina on slide start
+            character.staminaAttribute.currentValue -= character.data.staminaConsumptionPerSlide;
+            if (character.staminaAttribute.currentValue < 0)
+                character.staminaAttribute.currentValue = 0;
 
             character.SetColliderBounds(character.data.crouchColliderBounds);
             character.SwitchAnimation(KnightCharacterController.SlideAnimHash, true);

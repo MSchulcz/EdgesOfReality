@@ -76,6 +76,7 @@ namespace Metroidvania.Characters.Knight
         public KnightStateMachine stateMachine { get; private set; }
 
         public CharacterAttribute<float> lifeAttribute { get; private set; }
+        public CharacterAttribute<float> staminaAttribute { get; private set; }
 
         public InputAction crouchAction => InputReader.instance.inputActions.Gameplay.Crouch;
         public InputAction dashAction => InputReader.instance.inputActions.Gameplay.Dash;
@@ -100,6 +101,7 @@ namespace Metroidvania.Characters.Knight
             facingDirection = 1;
 
             lifeAttribute = new CharacterAttribute<float>(data.lifeAttributeData, at => at.data.startValue + at.currentLevel * at.data.stepPerLevel);
+            staminaAttribute = new CharacterAttribute<float>(data.staminaAttributeData, at => at.data.startValue + at.currentLevel * at.data.stepPerLevel);
 
             attackHits = new Collider2D[8];
             stateMachine = new KnightStateMachine(this);
@@ -109,6 +111,8 @@ namespace Metroidvania.Characters.Knight
         {
             CharacterStatusBar.instance.ConnectLife(lifeAttribute);
             CharacterStatusBar.instance.SetLife(lifeAttribute.currentValue);
+            CharacterStatusBar.instance.ConnectStamina(staminaAttribute);
+            CharacterStatusBar.instance.SetStamina(staminaAttribute.currentValue);
         }
 
         private void OnEnable()
@@ -130,6 +134,14 @@ namespace Metroidvania.Characters.Knight
         private void Update()
         {
             stateMachine.Update();
+
+            // Recover stamina over time
+            if (staminaAttribute.currentValue < staminaAttribute.maxValue)
+            {
+                staminaAttribute.currentValue += data.staminaRecoveryRate * Time.deltaTime;
+                if (staminaAttribute.currentValue > staminaAttribute.maxValue)
+                    staminaAttribute.currentValue = staminaAttribute.maxValue;
+            }
         }
 
         private void FixedUpdate()
@@ -147,7 +159,7 @@ namespace Metroidvania.Characters.Knight
             if (touchHit == null)
                 return;
 
-            Debug.Log($"[Player] Контакт с объектом {collision.name}");
+            Debug.Log($"[Player] пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ {collision.name}");
 
             if (!touchHit.ignoreInvincibility && isInvincible)
                 return;
@@ -297,7 +309,7 @@ namespace Metroidvania.Characters.Knight
         private void HandleAttack()
         {
             stateMachine.currentState.HandleAttack();
-            // Проверяем, какая атака сейчас
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
             if (stateMachine.currentState == stateMachine.crouchAttackState)
                 sfxPlayer?.PlaySFX("CrouchAttack");
             else if (stateMachine.currentState == stateMachine.firstAttackState)
@@ -314,8 +326,8 @@ namespace Metroidvania.Characters.Knight
             lifeAttribute.currentValue -= hitData.damage;
             data.onHurtChannel.Raise(this, hitData);
 
-            // Добавляем отбрасывание
-            rb.linearVelocity = Vector2.zero; // Опционально сброс текущей скорости
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+            rb.linearVelocity = Vector2.zero; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             rb.AddForce(hitData.knockbackForce, ForceMode2D.Impulse);
 
             if (lifeAttribute.currentValue <= 0)
@@ -354,11 +366,11 @@ namespace Metroidvania.Characters.Knight
             if (transitionData.gameData.ch_knight_died)
             {
                 transitionData.gameData.ch_knight_died = false;
-                lifeAttribute.currentValue = lifeAttribute.maxValue; // умер — воскрес с полным HP
+                lifeAttribute.currentValue = lifeAttribute.maxValue; // пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ HP
             }
             else
             {
-                lifeAttribute.currentValue = transitionData.gameData.ch_knight_life; // выжил — продолжаем с тем, что было
+                lifeAttribute.currentValue = transitionData.gameData.ch_knight_life; // пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
             }
 
 
