@@ -254,7 +254,7 @@ MonoBehaviour:
       Size: {x: 0.8, y: 0.8}
       Offset: {x: 0, y: 0}
   CenterOnActivate: 1
-  TargetOffset: {x: 0, y: 0, z: 0}
+  TargetOffset: {x: 0, y: 2, z: 0}
   Damping: {x: 1, y: 1, z: 1}
   Lookahead:
     Enabled: 0
@@ -77320,7 +77320,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6941007289448289128, guid: 11cd0fc535a25e447a5d9f0c58261dbb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.1
+      value: 1.9
       objectReference: {fileID: 0}
     - target: {fileID: 6951014943071956465, guid: 11cd0fc535a25e447a5d9f0c58261dbb, type: 3}
       propertyPath: m_AnchorMax.x
@@ -77336,7 +77336,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7331390236918163337, guid: 11cd0fc535a25e447a5d9f0c58261dbb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.1
+      value: 1.9
       objectReference: {fileID: 0}
     - target: {fileID: 7757075151652307024, guid: 11cd0fc535a25e447a5d9f0c58261dbb, type: 3}
       propertyPath: m_AnchorMax.x
@@ -77357,6 +77357,10 @@ PrefabInstance:
     - target: {fileID: 8153216896755857823, guid: 11cd0fc535a25e447a5d9f0c58261dbb, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9122814252141381631, guid: 11cd0fc535a25e447a5d9f0c58261dbb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3582552263140803940, guid: 11cd0fc535a25e447a5d9f0c58261dbb, type: 3}

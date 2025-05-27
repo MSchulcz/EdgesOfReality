@@ -4,6 +4,12 @@ using System.Collections;
 using UnityEngine.InputSystem;
 using TMPro;
 
+using UnityEngine;
+using UnityEngine.UI;
+using System.Collections;
+using UnityEngine.InputSystem;
+using TMPro;
+
 public class AdvancedDialogTrigger : MonoBehaviour
 {
     [Header("Диалоговая система")]
@@ -29,10 +35,21 @@ public class AdvancedDialogTrigger : MonoBehaviour
     private bool wasShown = false;
     private bool playerInRange = false;
 
+    private CanvasGroup dialogCanvasGroup;
+    private Coroutine fadeCoroutine;
+
     void Start()
     {
         if (dialogUI != null)
+        {
+            dialogCanvasGroup = dialogUI.GetComponent<CanvasGroup>();
+            if (dialogCanvasGroup == null)
+            {
+                dialogCanvasGroup = dialogUI.AddComponent<CanvasGroup>();
+            }
             dialogUI.SetActive(false);
+            dialogCanvasGroup.alpha = 0f;
+        }
 
         if (nextButton != null)
             nextButton.onClick.AddListener(NextLine);
@@ -65,6 +82,12 @@ public class AdvancedDialogTrigger : MonoBehaviour
             CloseDialog();
         }
 
+        // Обработка нажатия пробела для перехода к следующей строке диалога
+        if (dialogUI.activeSelf && Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame)
+        {
+            NextLine();
+        }
+
         // Обновление текста подсказки и видимости
         if (promptTextUI != null)
         {
@@ -89,7 +112,12 @@ public class AdvancedDialogTrigger : MonoBehaviour
         }
 
         wasShown = true;
+        if (fadeCoroutine != null)
+        {
+            StopCoroutine(fadeCoroutine);
+        }
         dialogUI.SetActive(true);
+        fadeCoroutine = StartCoroutine(FadeCanvasGroup(dialogCanvasGroup, 0f, 1f, 0.5f));
         currentLine = 0;
         typingCoroutine = StartCoroutine(TypeText(dialogLines[currentLine]));
     }
@@ -131,6 +159,29 @@ public class AdvancedDialogTrigger : MonoBehaviour
 
     void CloseDialog()
     {
+        if (fadeCoroutine != null)
+        {
+            StopCoroutine(fadeCoroutine);
+        }
+        fadeCoroutine = StartCoroutine(FadeOutAndDeactivate());
+    }
+
+    IEnumerator FadeCanvasGroup(CanvasGroup cg, float start, float end, float duration)
+    {
+        float elapsed = 0f;
+        cg.alpha = start;
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            cg.alpha = Mathf.Lerp(start, end, elapsed / duration);
+            yield return null;
+        }
+        cg.alpha = end;
+    }
+
+    IEnumerator FadeOutAndDeactivate()
+    {
+        yield return FadeCanvasGroup(dialogCanvasGroup, 1f, 0f, 0.5f);
         dialogUI.SetActive(false);
     }
 
