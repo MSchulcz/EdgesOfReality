@@ -1,0 +1,485 @@
+fileFormatVersion: 2
+guid: 908674eed8303774c8736754d755615b
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1635449550619391348
+    second: lucas_dash_0
+  - first:
+      213: -4647370443940786383
+    second: lucas_dash_1
+  - first:
+      213: -347463945435966091
+    second: lucas_dash_2
+  - first:
+      213: -1233244769112712428
+    second: lucas_dash_3
+  - first:
+      213: 8321575856677002402
+    second: lucas_dash_4
+  - first:
+      213: -4307561521486346195
+    second: lucas_dash_5
+  - first:
+      213: -7926829580012507422
+    second: lucas_dash_6
+  - first:
+      213: 2484720115429162404
+    second: lucas_dash_7
+  - first:
+      213: -5746298396252234989
+    second: lucas_dash_8
+  - first:
+      213: 1889638101156521268
+    second: lucas_dash_9
+  - first:
+      213: -6467876130910884634
+    second: lucas_dash_10
+  - first:
+      213: 7741333391177991840
+    second: lucas_dash_11
+  - first:
+      213: -2779395756863895036
+    second: lucas_dash_12
+  - first:
+      213: -508689411918582706
+    second: lucas_dash_13
+  - first:
+      213: 864219684648894277
+    second: lucas_dash_14
+  - first:
+      213: -5518015832540571212
+    second: lucas_dash_15
+  - first:
+      213: -7160241395090585367
+    second: lucas_dash_16
+  - first:
+      213: -5543485997941338232
+    second: lucas_dash_17
+  - first:
+      213: -2645489944626358335
+    second: lucas_dash_18
+  - first:
+      213: -7195220600928485574
+    second: lucas_dash_19
+  - first:
+      213: 4522051996013415041
+    second: lucas_dash_20
+  - first:
+      213: -5831507957729403060
+    second: lucas_dash_21
+  - first:
+      213: -5850632917085265629
+    second: lucas_dash_22
+  - first:
+      213: -1344263103164249433
+    second: lucas_dash_23
+  - first:
+      213: 5455774639546670064
+    second: lucas_dash_24
+  - first:
+      213: -3497063448820506768
+    second: lucas_dash_25
+  - first:
+      213: -4840342586745952095
+    second: lucas_dash_26
+  - first:
+      213: 7557810968762036460
+    second: lucas_dash_27
+  - first:
+      213: 7124775635400714731
+    second: lucas_dash_28
+  - first:
+      213: -3869485790162715777
+    second: lucas_dash_29
+  - first:
+      213: -7477251591774195584
+    second: lucas_dash_30
+  - first:
+      213: -7358442664490451894
+    second: lucas_dash_31
+  - first:
+      213: -5471676255577931688
+    second: lucas_dash_32
+  - first:
+      213: 7648874515548990478
+    second: lucas_dash_33
+  - first:
+      213: 9221465116529925997
+    second: lucas_dash_34
+  - first:
+      213: 8251201868518435899
+    second: lucas_dash_35
+  - first:
+      213: -2751624645921471371
+    second: lucas_dash_36
+  - first:
+      213: 4513347716294442439
+    second: lucas_dash_37
+  - first:
+      213: -305905238700322217
+    second: lucas_dash_38
+  - first:
+      213: -1113177475811854411
+    second: lucas_dash_39
+  - first:
+      213: 2015860748569225688
+    second: lucas_dash_40
+  - first:
+      213: -6179348829515249155
+    second: lucas_dash_41
+  - first:
+      213: -8882365585115328061
+    second: lucas_dash_42
+  - first:
+      213: 3484647505777320161
+    second: lucas_dash_43
+  - first:
+      213: -4376386328616889520
+    second: lucas_dash_44
+  - first:
+      213: 6315915627360632178
+    second: lucas_dash_45
+  - first:
+      213: 2053747872667175144
+    second: lucas_dash_46
+  - first:
+      213: -410054441023937396
+    second: lucas_dash_47
+  - first:
+      213: 164689735825262629
+    second: lucas_dash_48
+  - first:
+      213: 4062271746557445850
+    second: lucas_dash_49
+  - first:
+      213: -6207165240713892966
+    second: lucas_dash_50
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 420
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 0
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: lucas_dash_0
+      rect:
+        serializedVersion: 2
+        x: 489
+        y: 0
+        width: 312
+        height: 621
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c8a42477c47bd49e0800000000000000
+      internalID: -1635449550619391348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lucas_dash_1
+      rect:
+        serializedVersion: 2
+        x: 1996
+        y: 56
+        width: 674
+        height: 551
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 13f824d3439318fb0800000000000000
+      internalID: -4647370443940786383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lucas_dash_2
+      rect:
+        serializedVersion: 2
+        x: 3767
+        y: 49
+        width: 675
+        height: 560
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5759800f16f8d2bf0800000000000000
+      internalID: -347463945435966091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lucas_dash_3
+      rect:
+        serializedVersion: 2
+        x: 5309
+        y: 49
+        width: 892
+        height: 542
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41b9def9a62a2eee0800000000000000
+      internalID: -1233244769112712428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lucas_dash_4
+      rect:
+        serializedVersion: 2
+        x: 7079
+        y: 49
+        width: 892
+        height: 542
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ac13bce62d2c7370800000000000000
+      internalID: 8321575856677002402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lucas_dash_5
+      rect:
+        serializedVersion: 2
+        x: 8849
+        y: 49
+        width: 892
+        height: 542
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d284aaf5e977834c0800000000000000
+      internalID: -4307561521486346195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lucas_dash_6
+      rect:
+        serializedVersion: 2
+        x: 10751
+        y: 43
+        width: 760
+        height: 548
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ad3c66c7cf7b7220800000000000000
+      internalID: 2484720115429162404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lucas_dash_7
+      rect:
+        serializedVersion: 2
+        x: 12435
+        y: 21
+        width: 858
+        height: 586
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4356a7d57d7593a10800000000000000
+      internalID: 1889638101156521268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lucas_dash_8
+      rect:
+        serializedVersion: 2
+        x: 14549
+        y: 23
+        width: 522
+        height: 573
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a6c80534bdbe6b60800000000000000
+      internalID: 7741333391177991840
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Mobile_InputBackground_0: -1144180426
+      lucas_dash_6: 2484720115429162404
+      lucas_dash_7: 1889638101156521268
+      lucas_dash_8: 7741333391177991840
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

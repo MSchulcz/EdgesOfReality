@@ -7,40 +7,56 @@ public class UISoundPlayer : MonoBehaviour, IPointerEnterHandler, IPointerClickH
     [System.Serializable]
     public struct UIEventSound
     {
-        public string eventName; // Например, "ButtonClick", "ButtonHover"
+        public string eventName; // СЃРѕР±С‹С‚РёРµ, "ButtonClick", "ButtonHover"
         public AudioObject audioObject;
     }
 
     [SerializeField] private UIEventSound[] uiEventSounds;
 
-    // Воспроизводит звук по имени события
+    // РІРѕСЃРїСЂРѕРёР·РІРµРґРµРЅРёРµ Р·РІСѓРєР° РїРѕ РёРјРµРЅРё СЃРѕР±С‹С‚РёСЏ
     public void PlaySound(string eventName)
     {
+        Debug.Log($"РџРѕРїС‹С‚РєР° РІРѕСЃРїСЂРѕРёР·РІРµСЃС‚Рё Р·РІСѓРє UI СЃРѕР±С‹С‚РёСЏ: {eventName}");
         foreach (var sound in uiEventSounds)
         {
             if (sound.eventName == eventName)
             {
+                Debug.Log($"РќР°Р№РґРµРЅ Р·РІСѓРє РґР»СЏ СЃРѕР±С‹С‚РёСЏ {eventName}, РІРѕСЃРїСЂРѕРёР·РІРµРґРµРЅРёРµ.");
                 if (AudioManager.instance != null)
                 {
-                    AudioManager.instance.PlaySFX(sound.audioObject); // 2D звук для UI
+                    AudioManager.instance.PlaySFX(sound.audioObject); // 2D Р·РІСѓРє РґР»СЏ UI
                 }
                 else
                 {
-                    Debug.LogWarning("AudioManager не найден! Убедись, что он есть в сцене.");
+                    Debug.LogWarning("AudioManager РЅРµ РЅР°Р№РґРµРЅ! Р—РІСѓРє РЅРµ Р±СѓРґРµС‚ РІРѕСЃРїСЂРѕРёР·РІРµРґРµРЅ.");
                 }
                 return;
             }
         }
-        Debug.LogWarning($"UI звук с именем {eventName} не найден на {gameObject.name}");
+        Debug.LogWarning($"UI Р·РІСѓРє СЃ СЃРѕР±С‹С‚РёРµРј {eventName} РЅРµ РЅР°Р№РґРµРЅ РЅР° {gameObject.name}");
     }
 
-    // Вызывается при наведении курсора на элемент UI
+    // РІРѕСЃРїСЂРѕРёР·РІРµРґРµРЅРёРµ Р·РІСѓРєР° РѕС‚РєСЂС‹С‚РёСЏ РјРµРЅСЋ
+    public void PlayMenuOpenSound()
+    {
+        Debug.Log("Р’С‹Р·РѕРІ PlayMenuOpenSound");
+        PlaySound("MenuOpen");
+    }
+
+    // РІРѕСЃРїСЂРѕРёР·РІРµРґРµРЅРёРµ Р·РІСѓРєР° Р·Р°РєСЂС‹С‚РёСЏ РјРµРЅСЋ
+    public void PlayMenuCloseSound()
+    {
+        Debug.Log("Р’С‹Р·РѕРІ PlayMenuCloseSound");
+        PlaySound("MenuClose");
+    }
+
+    // РІРѕСЃРїСЂРѕРёР·РІРµРґРµРЅРёРµ Р·РІСѓРєР° РїСЂРё РЅР°РІРµРґРµРЅРёРё РЅР° UI СЌР»РµРјРµРЅС‚
     public void OnPointerEnter(PointerEventData eventData)
     {
         PlaySound("ButtonHover");
     }
 
-    // Вызывается при клике на элемент UI
+    // РІРѕСЃРїСЂРѕРёР·РІРµРґРµРЅРёРµ Р·РІСѓРєР° РїСЂРё РєР»РёРєРµ РЅР° UI СЌР»РµРјРµРЅС‚
     public void OnPointerClick(PointerEventData eventData)
     {
         PlaySound("ButtonClick");

@@ -49391,8 +49391,29 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3530928628632866336, guid: 1ba2c4a593468c34ba5e5fcda5f48310, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 475455442}
   m_SourcePrefab: {fileID: 100100000, guid: 1ba2c4a593468c34ba5e5fcda5f48310, type: 3}
+--- !u!1 &475455441 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3530928628632866336, guid: 1ba2c4a593468c34ba5e5fcda5f48310, type: 3}
+  m_PrefabInstance: {fileID: 475455440}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &475455442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 475455441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9723bc113849a6043a15d7971e979f53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiEventSounds: []
 --- !u!1 &485047788
 GameObject:
   m_ObjectHideFlags: 0
@@ -77180,6 +77201,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1334992749502967967, guid: 11cd0fc535a25e447a5d9f0c58261dbb, type: 3}
+      propertyPath: uiSoundPlayer
+      value: 
+      objectReference: {fileID: 475455442}
     - target: {fileID: 3582552263140803940, guid: 11cd0fc535a25e447a5d9f0c58261dbb, type: 3}
       propertyPath: Composition.ScreenPosition.x
       value: 0.000520844
