@@ -222,6 +222,9 @@ MonoBehaviour:
   m_HurtOffset: {x: 12.75, y: 2.45}
   m_DeathDuration: 6
   m_DeathFadeDelay: 2
+  m_HealthPackPrefab: {fileID: 4849708299918131197, guid: f8933137c13b4b446a163250a3614dff, type: 3}
+  m_HealthPackDropChance: 0.3
+  healthBarPrefab: {fileID: 3315642481723742259, guid: 3f71f193f19d34845847ec3ba527187b, type: 3}
 --- !u!114 &3790940784113598672
 MonoBehaviour:
   m_ObjectHideFlags: 0

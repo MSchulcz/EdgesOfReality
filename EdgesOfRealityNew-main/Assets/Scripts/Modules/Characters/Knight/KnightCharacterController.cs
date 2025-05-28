@@ -11,8 +11,17 @@ using UnityEngine.InputSystem;
 
 namespace Metroidvania.Characters.Knight
 {
-    public class KnightCharacterController : CharacterBase, ISceneTransistor, IEntityHittable
+public class KnightCharacterController : CharacterBase, ISceneTransistor, IEntityHittable
+{
+    public void RestoreHealth(float amount)
     {
+        lifeAttribute.currentValue += amount;
+        if (lifeAttribute.currentValue > lifeAttribute.maxValue)
+        {
+            lifeAttribute.currentValue = lifeAttribute.maxValue;
+        }
+        CharacterStatusBar.instance.SetLife(lifeAttribute.currentValue);
+    }
         public static readonly int IdleAnimHash = Animator.StringToHash("Idle");
         public static readonly int RunAnimHash = Animator.StringToHash("Run");
 

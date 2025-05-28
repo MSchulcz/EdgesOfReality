@@ -466,22 +466,26 @@ public override void Enter(KnightStateBase previousState)
                 && character.staminaAttribute.currentValue >= character.data.staminaConsumptionPerSlide;
         }
 
-        public override void Enter(KnightStateBase previousState)
-        {
-            _elapsedTime = 0;
-            _inQuittingAnim = false;
+public override void Enter(KnightStateBase previousState)
+{
+    _elapsedTime = 0;
+    _inQuittingAnim = false;
 
-            // Consume stamina on slide start
-            character.staminaAttribute.currentValue -= character.data.staminaConsumptionPerSlide;
-            if (character.staminaAttribute.currentValue < 0)
-                character.staminaAttribute.currentValue = 0;
+    // Consume stamina on slide start
+    character.staminaAttribute.currentValue -= character.data.staminaConsumptionPerSlide;
+    if (character.staminaAttribute.currentValue < 0)
+        character.staminaAttribute.currentValue = 0;
 
-            character.SetColliderBounds(character.data.crouchColliderBounds);
-            character.SwitchAnimation(KnightCharacterController.SlideAnimHash, true);
-            character.particles.slide.Play();
-            character.FlipFacingDirection(character.facingDirection);
-            character.PlaySFX("Slide");
-        }
+    character.SetColliderBounds(character.data.crouchColliderBounds);
+
+    // Lower the graphics local position to prevent lifting during slide animation
+    character.GfxGameObject.transform.localPosition = character.OriginalGfxLocalPosition + new Vector3(0, -0.2f, 0);
+
+    character.SwitchAnimation(KnightCharacterController.SlideAnimHash, true);
+    character.particles.slide.Play();
+    character.FlipFacingDirection(character.facingDirection);
+    character.PlaySFX("Slide");
+}
 
         public override void Transition()
         {
