@@ -317,7 +317,7 @@ public class BatBehaviour : MonoBehaviour, IHittableTarget
         state = State.Wait;
         waitTimer = waitDuration;
 
-        yield return new WaitForSeconds(0.2f); // Увеличиваем длительность анимации Hurt
+        yield return new WaitForSeconds(0.1f); // Увеличиваем длительность анимации Hurt
 
         isHurt = false;
 
