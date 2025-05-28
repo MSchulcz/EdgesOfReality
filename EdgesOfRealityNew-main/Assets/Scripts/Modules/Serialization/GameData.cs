@@ -15,6 +15,8 @@ namespace Metroidvania.Serialization
         public bool ch_knight_died;
         public float ch_archer_life;
 
+        public bool tutorialCompleted;  // Flag to track if tutorial was completed
+
         public GameData Clone() => MemberwiseClone() as GameData;
         object System.ICloneable.Clone() => Clone();
 

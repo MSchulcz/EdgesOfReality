@@ -7,6 +7,7 @@ using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.ResourceManagement.ResourceProviders;
 using UnityEngine.UI;
+using System;
 
 namespace Metroidvania.SceneManagement
 {
@@ -100,13 +101,32 @@ namespace Metroidvania.SceneManagement
         {
             if (_sceneChannelAssetHandle.IsValid())
             {
+                Debug.Log("Releasing previous scene asset handle");
                 Addressables.Release(_sceneChannelAssetHandle);
+                _sceneChannelAssetHandle = default;
             }
 
-            _sceneChannelAssetHandle = sceneRef.LoadAssetAsync<SceneChannel>();
-            yield return _sceneChannelAssetHandle;
+            AsyncOperationHandle<SceneChannel> loadHandle = sceneRef.LoadAssetAsync<SceneChannel>();
+            yield return loadHandle;
 
-            SceneChannel scene = _sceneChannelAssetHandle.Result;
+            if (!loadHandle.IsValid())
+            {
+                Debug.LogError("Scene asset handle is invalid after load");
+                yield break;
+            }
+
+            SceneChannel scene = null;
+            try
+            {
+                scene = loadHandle.Result;
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"Exception accessing scene asset handle result: {ex}");
+                yield break;
+            }
+
+            _sceneChannelAssetHandle = loadHandle;
 
             if (activeScene?.operation.IsValid() == true)
                 OnUnloadScene(scene);

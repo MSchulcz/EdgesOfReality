@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ec7d8eb0419e6694b91cdec283032166, type: 3}
-  m_Name: ThePaleMoonlight_SampleScene
+  m_Name: CityScene
   m_EditorClassIdentifier: 
   description: 
   sceneType: 0

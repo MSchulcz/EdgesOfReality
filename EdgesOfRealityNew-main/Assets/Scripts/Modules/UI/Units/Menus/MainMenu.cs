@@ -1,4 +1,4 @@
-﻿using Metroidvania.Credits;
+using Metroidvania.Credits;
 using Metroidvania.InputSystem;
 using Metroidvania.Serialization.Menus;
 using TMPro;
@@ -16,7 +16,11 @@ namespace Metroidvania.UI.Menus
 
         [SerializeField] private TextMeshProUGUI m_versionText;
 
+        [SerializeField] private TutorialPrompt tutorialPrompt;
+
         public IMenuScreen activeScreen;
+
+        [SerializeField] private bool autoShowTutorialPromptOnStart = false;
 
         private void Awake()
         {
@@ -30,7 +34,12 @@ namespace Metroidvania.UI.Menus
 
         private void Start()
         {
+            Debug.Log("MainMenu Start called");
             SetFirstSelected();
+            if (autoShowTutorialPromptOnStart)
+            {
+                StartGame();
+            }
         }
 
         private void OnDestroy()
@@ -70,6 +79,17 @@ namespace Metroidvania.UI.Menus
 #else
             Application.Quit();
 #endif
+        }
+
+        public void StartGame()
+        {
+            if (tutorialPrompt == null)
+            {
+                Debug.LogError("tutorialPrompt reference is null in MainMenu");
+                return;
+            }
+            Debug.Log("Calling tutorialPrompt.ShowPrompt()");
+            tutorialPrompt.ShowPrompt();
         }
     }
 }

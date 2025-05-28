@@ -58,6 +58,7 @@ MonoBehaviour:
     m_SubObjectGUID: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
+  tutorialPrompt: {fileID: 0}
 --- !u!114 &2885734022489267492
 MonoBehaviour:
   m_ObjectHideFlags: 0

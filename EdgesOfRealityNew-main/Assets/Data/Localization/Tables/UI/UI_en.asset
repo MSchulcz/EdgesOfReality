@@ -142,6 +142,10 @@ MonoBehaviour:
     m_Localized: You Died
     m_Metadata:
       m_Items: []
+  - m_Id: 398960722866745344
+    m_Localized: Tutorial?
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

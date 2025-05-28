@@ -12,8 +12,13 @@ namespace Metroidvania.Serialization.Menus
 
         [SerializeField] private AssetReferenceSceneChannel m_sceneLevel0;
 
+        [SerializeField] private TutorialPrompt tutorialPrompt;
+
         public event System.Action OnMenuDisable;
         private SaveSlot[] _saveSlots;
+
+        private int _selectedUserId;
+        private GameData _selectedGameData;
 
         private void Start()
         {
@@ -25,33 +30,74 @@ namespace Metroidvania.Serialization.Menus
                 saveSlot.SetData(saveUserData);
                 saveSlot.button.onClick.AddListener(() => OnSaveSlotClick(saveSlot));
             }
+
+            if (tutorialPrompt != null)
+            {
+                tutorialPrompt.SetCallbacks(OnTutorialYes, OnTutorialNo);
+                tutorialPrompt.SetTutorialCompleteCallback(OnTutorialComplete);
+            }
         }
 
         public void OnSaveSlotClick(SaveSlot saveSlot)
         {
-            DataManager.instance.ChangeSelectedUser(saveSlot.GetUserId());
-            GameData slotData = saveSlot.GetData();
-            if (slotData != null)
-                ContinueGame(slotData);
+            _selectedUserId = saveSlot.GetUserId();
+            _selectedGameData = saveSlot.GetData();
+
+            if (tutorialPrompt != null && !_selectedGameData.tutorialCompleted)
+            {
+                tutorialPrompt.ShowPrompt();
+            }
             else
-                NewGame(saveSlot.GetUserId());
+            {
+                StartGame();
+            }
         }
 
-        private void NewGame(int userId)
+        private void OnTutorialYes()
         {
-            if (GameDebugger.instance.debugSerialization)
-                GameDebugger.Log($"Started a new game at user {userId}");
+            DataManager.instance.ChangeSelectedUser(_selectedUserId);
+            // Do not set tutorialCompleted here; set after tutorial completion
+            // DataManager.instance.gameData.tutorialCompleted = true;
+            // DataManager.instance.SerializeData();
 
-            SceneLoader.instance.LoadScene(m_sceneLevel0, SceneLoader.SceneTransitionData.UseGameData);
+            SceneLoader.instance.LoadScene(tutorialPrompt.TutorialScene, SceneLoader.SceneTransitionData.UseGameData);
             InputReader.instance.EnableGameplayInput();
         }
 
-        private void ContinueGame(GameData data)
+        private void OnTutorialNo()
         {
-            if (GameDebugger.instance.debugSerialization)
-                GameDebugger.Log($"Continued a game {data.userId}");
+            DataManager.instance.ChangeSelectedUser(_selectedUserId);
+            DataManager.instance.gameData.tutorialCompleted = true;
+            DataManager.instance.SerializeData();
 
-            data.LoadCurrentScene();
+            if (_selectedGameData != null)
+            {
+                _selectedGameData.LoadCurrentScene();
+            }
+            else
+            {
+                SceneLoader.instance.LoadScene(tutorialPrompt.FirstLevelScene, SceneLoader.SceneTransitionData.UseGameData);
+            }
+            InputReader.instance.EnableGameplayInput();
+        }
+
+        private void OnTutorialComplete()
+        {
+            DataManager.instance.gameData.tutorialCompleted = true;
+            DataManager.instance.SerializeData();
+        }
+
+        private void StartGame()
+        {
+            if (_selectedGameData != null)
+            {
+                _selectedGameData.LoadCurrentScene();
+            }
+            else
+            {
+                SceneLoader.instance.LoadScene(m_sceneLevel0, SceneLoader.SceneTransitionData.UseGameData);
+            }
+            InputReader.instance.EnableGameplayInput();
         }
 
         public void ActiveMenu()
