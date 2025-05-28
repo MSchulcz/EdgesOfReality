@@ -76925,6 +76925,10 @@ PrefabInstance:
       propertyPath: healthBarPrefab
       value: 
       objectReference: {fileID: 1850487102}
+    - target: {fileID: 3790940784113598703, guid: 240654708a100db4e9a4cf05b84db95e, type: 3}
+      propertyPath: m_HealthPackDropChance
+      value: 0.3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
