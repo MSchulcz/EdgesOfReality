@@ -90,30 +90,36 @@ private Vector3 _originalGfxLocalPosition;
 
         private SFXPlayer sfxPlayer;
 
+        public CameraShake cameraShake;
+
+
         public void PlaySFX(string eventName)
         {
             sfxPlayer?.PlaySFX(eventName);
         }
-private void  Awake() 
-{
-    rb = GetComponent<Rigidbody2D>();
-    _collider = GetComponent<BoxCollider2D>();
-    _animator = m_gfxGameObject.GetComponent<SpriteSheetAnimator>();
-    _renderer = m_gfxGameObject.GetComponent<SpriteRenderer>();
+        private void  Awake() 
+        {
+            Debug.Log("KnightCharacterController Awake called. CameraShake component: " + (Camera.main != null ? Camera.main.GetComponent<CameraShake>() : "Camera.main is null"));
+            rb = GetComponent<Rigidbody2D>();
+            _collider = GetComponent<BoxCollider2D>();
+            _animator = m_gfxGameObject.GetComponent<SpriteSheetAnimator>();
+            _renderer = m_gfxGameObject.GetComponent<SpriteRenderer>();
 
-    _originalGfxLocalPosition = m_gfxGameObject.transform.localPosition;
+            _originalGfxLocalPosition = m_gfxGameObject.transform.localPosition;
 
-    sfxPlayer = GetComponent<SFXPlayer>();
+            sfxPlayer = GetComponent<SFXPlayer>();
 
-    facingDirection = 1;
+            cameraShake = Camera.main.GetComponent<CameraShake>();
+
+            facingDirection = 1;
             lifeAttribute = new CharacterAttribute<float>(data.lifeAttributeData, at => at.data.startValue + at.currentLevel * at.data.stepPerLevel);
             staminaAttribute = new CharacterAttribute<float>(data.staminaAttributeData, at => at.data.startValue + at.currentLevel * at.data.stepPerLevel);
 
-    lifeAttribute = new CharacterAttribute<float>(data.lifeAttributeData, at => at.data.startValue + at.currentLevel * at.data.stepPerLevel);
+            lifeAttribute = new CharacterAttribute<float>(data.lifeAttributeData, at => at.data.startValue + at.currentLevel * at.data.stepPerLevel);
 
-    attackHits = new Collider2D[8];
-    stateMachine = new KnightStateMachine(this);
-}
+            attackHits = new Collider2D[8];
+            stateMachine = new KnightStateMachine(this);
+        }
 
         private void Start()
         {

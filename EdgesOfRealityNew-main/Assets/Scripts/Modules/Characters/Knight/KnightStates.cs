@@ -776,12 +776,24 @@ public class KnightCrouchAttackState : KnightAttackState
         {
             _elapsedTime = 0;
 
+            Debug.Log("KnightHurtState.Enter called. Character instance: " + character);
+
             character.SetColliderBounds(character.data.standColliderBounds);
             character.SwitchAnimation(KnightCharacterController.HurtAnimHash);
 
             character.rb.linearVelocity = Vector2.zero;
             character.rb.AddForce(hitData.knockbackForce, ForceMode2D.Impulse);
             character.PlaySFX("Hurt");
+
+            if (character.cameraShake != null)
+            {
+                Debug.Log("CameraShake is not null, calling Shake()");
+                character.cameraShake.Shake(0.2f, 0.1f);
+            }
+            else
+            {
+                Debug.Log("CameraShake is null in KnightHurtState.Enter");
+            }
         }
 
         public override void Transition()
