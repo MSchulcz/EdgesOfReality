@@ -230,12 +230,73 @@ public class SkeletonBehaviour : EntityStateMachine<SkeletonBehaviour>, IHittabl
 
         private bool CanWalkToPosition(Vector2 targetPosition) => CanWalkToDirection(targetPosition.x - rb.position.x) && IsInsideVerticalView(targetPosition.y);
 
+        private float playerLastYPosition = float.MinValue;
+        private float playerClimbingCooldown = 0f;
+        private const float playerClimbingCooldownDuration = 0.2f; // reduced cooldown for faster response
+
+        private float edgeLingerTime = 0f;
+        private const float maxEdgeLingerDuration = 2.0f; // max time skeleton can linger at edge
+
+        private bool IsPlayerClimbingUpNear()
+        {
+            if (playerTransform == null)
+                return false;
+
+            Vector2 skeletonPos = rb.position;
+            Vector2 playerPos = playerTransform.position;
+
+            // Check horizontal proximity (e.g., within 2 units)
+            if (Mathf.Abs(playerPos.x - skeletonPos.x) > 2f)
+                return false;
+
+            // Check vertical movement direction and cooldown
+            float verticalMovement = playerPos.y - playerLastYPosition;
+            playerLastYPosition = playerPos.y;
+
+            if (playerClimbingCooldown > 0f)
+            {
+                playerClimbingCooldown -= Time.deltaTime;
+                return true; // maintain climbing state during cooldown
+            }
+
+            if (verticalMovement > 0f)
+            {
+                // Player moving upward near skeleton
+                return true;
+            }
+            else if (verticalMovement < 0f)
+            {
+                // Player moving downward near skeleton, start cooldown
+                playerClimbingCooldown = playerClimbingCooldownDuration;
+                return true; // still treat as climbing during cooldown
+            }
+
+            return false;
+        }
+
         private bool CanWalkToDirection(float direction)
         {
             bool leftObsolete = direction < 0 && leftObstructed;
             bool rightObsolete = direction > 0 && rightObstructed;
+
+            // Prevent skeleton from moving closer to edge if player is climbing near
+            if (IsPlayerClimbingUpNear())
+            {
+                if (direction < 0 && leftObstructed)
+                    return false;
+                if (direction > 0 && rightObstructed)
+                    return false;
+
+                // Add buffer zone: prevent moving closer to edge if near edge and player climbing
+                // For example, if skeleton is already on ledge, prevent moving further
+                if ((direction < 0 && onLeftLedge) || (direction > 0 && onRightLedge))
+                    return false;
+            }
+
             return !leftObsolete && !rightObsolete;
         }
+
+        private Transform playerTransform;
 
         private bool IsInsideVerticalView(float position) => m_FollowTargetVerticalView.Contains(position - rb.position.y);
 
@@ -314,6 +375,8 @@ public class SkeletonBehaviour : EntityStateMachine<SkeletonBehaviour>, IHittabl
             }
         }
 
+        [SerializeField] private float m_SafeZoneDistanceFromEdge = 1.0f;
+
         public class PatrolState : StateBase
         {
             private float elapsedTime { get; set; }
@@ -344,6 +407,24 @@ public class SkeletonBehaviour : EntityStateMachine<SkeletonBehaviour>, IHittabl
                 {
                     entity.SwitchState(entity._followTargetState);
                     return;
+                }
+
+                // New logic: if player climbing near, move away from edge
+                if (entity.IsPlayerClimbingUpNear())
+                {
+                    float directionAwayFromEdge = 0f;
+
+                    if (entity.onLeftLedge && entity.facingDirection == -1)
+                        directionAwayFromEdge = 1f; // move right away from left edge
+                    else if (entity.onRightLedge && entity.facingDirection == 1)
+                        directionAwayFromEdge = -1f; // move left away from right edge
+
+                    if (directionAwayFromEdge != 0f)
+                    {
+                        entity.Flip((int)directionAwayFromEdge);
+                        entity.rb.linearVelocity = new Vector2(directionAwayFromEdge * entity.m_PatrolMoveSpeed * entity.normalizedSpeedFactor, entity.rb.linearVelocity.y);
+                        return;
+                    }
                 }
 
                 if (!entity.CanWalkToDirection(entity.facingDirection))
