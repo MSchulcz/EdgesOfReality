@@ -62,6 +62,10 @@ namespace Metroidvania.Entities.Units
         [SerializeField] private float m_DeathDuration;
         [SerializeField] private float m_DeathFadeDelay;
 
+        [Header("Drop")]
+        [SerializeField] private GameObject m_HealthPackPrefab;
+        [SerializeField, Range(0f, 1f)] private float m_HealthPackDropChance = 0.3f;
+
         public Rigidbody2D rb { get; private set; }
         public EntityTargetFinder targetFinder { get; private set; }
         public Animator anim { get; private set; }
@@ -445,6 +449,12 @@ namespace Metroidvania.Entities.Units
                 entity.rb.linearVelocity = Vector2.zero;
                 entity.m_TouchHitBehaviour.enabled = false;
                 entity.PlayAnimation("Die");
+
+                // Выпадение аптечки с вероятностью
+                if (entity.m_HealthPackPrefab != null && UnityEngine.Random.value <= entity.m_HealthPackDropChance)
+                {
+                    UnityEngine.Object.Instantiate(entity.m_HealthPackPrefab, entity.transform.position, Quaternion.identity);
+                }
             }
 
             public override void LogicUpdate()

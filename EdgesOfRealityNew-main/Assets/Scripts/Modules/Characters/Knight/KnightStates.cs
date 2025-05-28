@@ -788,7 +788,7 @@ public class KnightCrouchAttackState : KnightAttackState
             if (character.cameraShake != null)
             {
                 Debug.Log("CameraShake is not null, calling Shake()");
-                character.cameraShake.Shake(0.2f, 0.1f);
+                character.cameraShake.Shake(0.5f, 0.3f);
             }
             else
             {

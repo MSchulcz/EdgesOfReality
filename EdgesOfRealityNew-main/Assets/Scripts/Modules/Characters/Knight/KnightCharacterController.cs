@@ -109,7 +109,18 @@ private Vector3 _originalGfxLocalPosition;
 
             sfxPlayer = GetComponent<SFXPlayer>();
 
-            cameraShake = Camera.main.GetComponent<CameraShake>();
+            // Получаем объект MainCamera (родитель Camera.main)
+            var mainCameraParent = Camera.main != null ? Camera.main.transform.parent : null;
+            if (mainCameraParent != null)
+            {
+                cameraShake = mainCameraParent.GetComponent<CameraShake>();
+                Debug.Log("CameraShake found on MainCamera parent: " + (cameraShake != null));
+            }
+            else
+            {
+                cameraShake = null;
+                Debug.Log("MainCamera parent is null, cannot find CameraShake");
+            }
 
             facingDirection = 1;
             lifeAttribute = new CharacterAttribute<float>(data.lifeAttributeData, at => at.data.startValue + at.currentLevel * at.data.stepPerLevel);
