@@ -6,136 +6,183 @@ namespace Metroidvania.Entities.Units
 {
     [RequireComponent(typeof(SpriteRenderer))]
     [RequireComponent(typeof(EntityTargetFinder), typeof(Rigidbody2D), typeof(Animator))]
-    public class SkeletonBehaviour : EntityStateMachine<SkeletonBehaviour>, IHittableTarget
+public class SkeletonBehaviour : EntityStateMachine<SkeletonBehaviour>, IHittableTarget
+{
+    [System.Serializable]
+    private struct AttackData
     {
-        [System.Serializable]
-        private struct AttackData
-        {
 #if UNITY_EDITOR
-            public bool drawGizmos;
+        public bool drawGizmos;
 #endif
-            public float moveOffset;
-            public Rect attackCollision;
-            public float damage;
-            public Vector2 knockbackForce;
-        }
+        public float moveOffset;
+        public Rect attackCollision;
+        public float damage;
+        public Vector2 knockbackForce;
+    }
 
-        [Header("Properties")]
-        [SerializeField] private float m_StartLife;
-        [SerializeField] private bool m_StartFacingRight;
-        [SerializeField, RangedValue(0, 1)] private RangedFloat m_RngStrength;
+    [Header("Properties")]
+    [SerializeField] private float m_StartLife;
+    [SerializeField] private bool m_StartFacingRight;
+    [SerializeField, RangedValue(0, 1)] private RangedFloat m_RngStrength;
 
-        [Header("Collisions")]
-        [SerializeField] private Collider2D m_Collider;
-        [SerializeField] private Rect m_LeftLedge;
-        [SerializeField] private Rect m_RightLedge;
-        [SerializeField] private Rect m_LeftHand;
-        [SerializeField] private Rect m_RightHand;
-        [SerializeField] private LayerMask m_GroundLayer;
+    [Header("Collisions")]
+    [SerializeField] private Collider2D m_Collider;
+    [SerializeField] private Rect m_LeftLedge;
+    [SerializeField] private Rect m_RightLedge;
+    [SerializeField] private Rect m_LeftHand;
+    [SerializeField] private Rect m_RightHand;
+    [SerializeField] private LayerMask m_GroundLayer;
 
-        [Header("Follow Target")]
-        [SerializeField] private float m_FollowTargetSpeed;
-        [UnityEngine.Serialization.FormerlySerializedAs("m_FollowTargetYOffset")]
-        [SerializeField] private RangedFloat m_FollowTargetVerticalView;
+    [Header("Follow Target")]
+    [SerializeField] private float m_FollowTargetSpeed;
+    [UnityEngine.Serialization.FormerlySerializedAs("m_FollowTargetYOffset")]
+    [SerializeField] private RangedFloat m_FollowTargetVerticalView;
 
-        [Header("Patrol")]
-        [SerializeField, Range(0, 100)] private float m_PatrolChance;
-        [SerializeField, RangedValue(0, 30)] private RangedFloat m_PatrolTime;
-        [SerializeField] private float m_PatrolMoveSpeed;
+    [Header("Patrol")]
+    [SerializeField, Range(0, 100)] private float m_PatrolChance;
+    [SerializeField, RangedValue(0, 30)] private RangedFloat m_PatrolTime;
+    [SerializeField] private float m_PatrolMoveSpeed;
 
-        [Header("Attack")]
-        [SerializeField] private TouchHitBehaviour m_TouchHitBehaviour;
-        [UnityEngine.Serialization.FormerlySerializedAs("m_PlayerLayer")]
-        [SerializeField] private LayerMask m_CharactersLayer;
-        [SerializeField] private float m_DistanceToAttack;
-        [SerializeField] private float m_AttackDuration;
-        [SerializeField] private float m_FirstAttackTime;
-        [SerializeField] private AttackData m_FirstAttack;
-        [SerializeField] private float m_SecondAttackTime;
-        [SerializeField] private AttackData m_SecondAttack;
+    [Header("Attack")]
+    [SerializeField] private TouchHitBehaviour m_TouchHitBehaviour;
+    [UnityEngine.Serialization.FormerlySerializedAs("m_PlayerLayer")]
+    [SerializeField] private LayerMask m_CharactersLayer;
+    [SerializeField] private float m_DistanceToAttack;
+    [SerializeField] private float m_AttackDuration;
+    [SerializeField] private float m_FirstAttackTime;
+    [SerializeField] private AttackData m_FirstAttack;
+    [SerializeField] private float m_SecondAttackTime;
+    [SerializeField] private AttackData m_SecondAttack;
 
-        [Header("Hurt")]
-        [SerializeField] private float m_HurtDuration;
-        [SerializeField] private Vector2 m_HurtOffset;
+    [Header("Hurt")]
+    [SerializeField] private float m_HurtDuration;
+    [SerializeField] private Vector2 m_HurtOffset;
 
-        [Header("Death")]
-        [SerializeField] private float m_DeathDuration;
-        [SerializeField] private float m_DeathFadeDelay;
+    [Header("Death")]
+    [SerializeField] private float m_DeathDuration;
+    [SerializeField] private float m_DeathFadeDelay;
 
-        [Header("Drop")]
-        [SerializeField] private GameObject m_HealthPackPrefab;
-        [SerializeField, Range(0f, 1f)] private float m_HealthPackDropChance = 0.3f;
+    [Header("Drop")]
+    [SerializeField] private GameObject m_HealthPackPrefab;
+    [SerializeField, Range(0f, 1f)] private float m_HealthPackDropChance = 0.3f;
 
-        public Rigidbody2D rb { get; private set; }
-        public EntityTargetFinder targetFinder { get; private set; }
-        public Animator anim { get; private set; }
-        public SpriteRenderer spriteRenderer { get; private set; }
+    [Header("Health Bar")]
+    [SerializeField] private GameObject healthBarPrefab;
+    private EnemyHealthBar healthBarInstance;
 
-        private int facingDirection { get; set; }
-        private float life { get; set; }
-        private float normalizedSpeedFactor { get; set; }
+    public Rigidbody2D rb { get; private set; }
+    public EntityTargetFinder targetFinder { get; private set; }
+    public Animator anim { get; private set; }
+    public SpriteRenderer spriteRenderer { get; private set; }
 
-        private bool onLeftLedge { get; set; }
-        private bool onRightLedge { get; set; }
-        private bool onLeftWall { get; set; }
-        private bool onRightWall { get; set; }
+    private int facingDirection { get; set; }
+    private float life { get; set; }
+    private float normalizedSpeedFactor { get; set; }
 
-        private bool leftObstructed => !onLeftLedge || onLeftWall;
-        private bool rightObstructed => !onRightLedge || onRightWall;
+    private bool onLeftLedge { get; set; }
+    private bool onRightLedge { get; set; }
+    private bool onLeftWall { get; set; }
+    private bool onRightWall { get; set; }
 
-        private bool targetObstructed { get; set; }
+    private bool leftObstructed => !onLeftLedge || onLeftWall;
+    private bool rightObstructed => !onRightLedge || onRightWall;
 
-        private IdleState _idleState;
-        private PatrolState _patrolState;
-        private FollowTargetState _followTargetState;
-        private AttackState _attackState;
-        private HurtState _hurtState;
-        private DieState _dieState;
+    private bool targetObstructed { get; set; }
 
-        private void Awake()
+    private IdleState _idleState;
+    private PatrolState _patrolState;
+    private FollowTargetState _followTargetState;
+    private AttackState _attackState;
+    private HurtState _hurtState;
+    private DieState _dieState;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        targetFinder = GetComponent<EntityTargetFinder>();
+        anim = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
+        Flip(m_StartFacingRight ? 1 : -1);
+        life = m_StartLife;
+        normalizedSpeedFactor = m_RngStrength.RandomRange();
+
+        _idleState = new IdleState(this);
+        _patrolState = new PatrolState(this);
+        _followTargetState = new FollowTargetState(this);
+        _attackState = new AttackState(this);
+        _hurtState = new HurtState(this);
+        _dieState = new DieState(this);
+
+        SwitchState(_idleState);
+
+        if (healthBarPrefab != null)
         {
-            rb = GetComponent<Rigidbody2D>();
-            targetFinder = GetComponent<EntityTargetFinder>();
-            anim = GetComponent<Animator>();
-            spriteRenderer = GetComponent<SpriteRenderer>();
-
-            Flip(m_StartFacingRight ? 1 : -1);
-            life = m_StartLife;
-            normalizedSpeedFactor = m_RngStrength.RandomRange();
-
-            _idleState = new IdleState(this);
-            _patrolState = new PatrolState(this);
-            _followTargetState = new FollowTargetState(this);
-            _attackState = new AttackState(this);
-            _hurtState = new HurtState(this);
-            _dieState = new DieState(this);
-
-            SwitchState(_idleState);
-        }
-
-        private void FixedUpdate()
-        {
-            onLeftLedge = Physics2D.OverlapBox(rb.position + m_LeftLedge.center, m_LeftLedge.size, 0, m_GroundLayer);
-            onRightLedge = Physics2D.OverlapBox(rb.position + m_RightLedge.center, m_RightLedge.size, 0, m_GroundLayer);
-            onLeftWall = Physics2D.OverlapBox(rb.position + m_LeftHand.center, m_LeftHand.size, 0, m_GroundLayer);
-            onRightWall = Physics2D.OverlapBox(rb.position + m_RightHand.center, m_RightHand.size, 0, m_GroundLayer);
-
-            targetObstructed = targetFinder.hasFocusedTarget && targetFinder.IsObstructed(targetFinder.focusedTarget.position);
-        }
-
-        public void OnTakeHit(CharacterHitData hitData)
-        {
-            life -= hitData.damage;
-            if (life > 0)
+            GameObject hb = Instantiate(healthBarPrefab, transform);
+            hb.transform.localPosition = new Vector3(0, 0.8f, 0); // Adjust height as needed
+            healthBarInstance = hb.GetComponent<EnemyHealthBar>();
+            if (healthBarInstance != null)
             {
-                _hurtState.lastHitData = hitData;
-                SwitchState(_hurtState);
+                healthBarInstance.Initialize(m_StartLife);
+                healthBarInstance.SetHealth(life);
+                Debug.Log("Health bar instantiated and initialized for Skeleton.");
             }
             else
             {
-                SwitchState(_dieState);
+                Debug.LogError("Health bar prefab does not have EnemyHealthBar component.");
             }
         }
+    }
+
+    private void LateUpdate()
+    {
+        if (healthBarInstance != null)
+        {
+            Vector3 scale = healthBarInstance.transform.localScale;
+            scale.x = Mathf.Abs(scale.x);
+            healthBarInstance.transform.localScale = scale;
+        }
+    }
+
+    // Removed Update method to avoid conflicts with movement and LateUpdate
+
+    private void OnDeath()
+    {
+        if (healthBarInstance != null)
+        {
+            // Instead of HideHealthBar, disable the health bar GameObject to hide it
+            healthBarInstance.gameObject.SetActive(false);
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        onLeftLedge = Physics2D.OverlapBox(rb.position + m_LeftLedge.center, m_LeftLedge.size, 0, m_GroundLayer);
+        onRightLedge = Physics2D.OverlapBox(rb.position + m_RightLedge.center, m_RightLedge.size, 0, m_GroundLayer);
+        onLeftWall = Physics2D.OverlapBox(rb.position + m_LeftHand.center, m_LeftHand.size, 0, m_GroundLayer);
+        onRightWall = Physics2D.OverlapBox(rb.position + m_RightHand.center, m_RightHand.size, 0, m_GroundLayer);
+
+        targetObstructed = targetFinder.hasFocusedTarget && targetFinder.IsObstructed(targetFinder.focusedTarget.position);
+    }
+
+    public void OnTakeHit(CharacterHitData hitData)
+    {
+        life -= hitData.damage;
+        if (life > 0)
+        {
+            _hurtState.lastHitData = hitData;
+            SwitchState(_hurtState);
+        }
+        else
+        {
+            SwitchState(_dieState);
+        }
+
+        if (healthBarInstance != null)
+        {
+            healthBarInstance.SetHealth(life);
+        }
+    }
 
         private void PlayAnimation(string key)
         {

@@ -40,6 +40,10 @@ public class BatBehaviour : MonoBehaviour, IHittableTarget
     [SerializeField] private Collider2D bodyCollider;
     [SerializeField] private CharacterBase characterBase;
 
+    [Header("Health Bar")]
+    [SerializeField] private GameObject healthBarPrefab;
+    private EnemyHealthBar healthBarInstance;
+
     private Transform target;
     private Transform patrolTarget;
     private float life;
@@ -64,18 +68,39 @@ public class BatBehaviour : MonoBehaviour, IHittableTarget
         anim.SetInteger("State", value);
     }
 
-    private void Awake()
-    {
-        if (!rb) rb = GetComponent<Rigidbody2D>();
-        if (!anim) anim = GetComponent<Animator>();
-        if (!bodyCollider) bodyCollider = GetComponent<Collider2D>();
-        if (!characterBase) characterBase = GetComponent<CharacterBase>();
+private void Awake()
+{
+    if (!rb) rb = GetComponent<Rigidbody2D>();
+    if (!anim) anim = GetComponent<Animator>();
+    if (!bodyCollider) bodyCollider = GetComponent<Collider2D>();
+    if (!characterBase) characterBase = GetComponent<CharacterBase>();
 
-        rb.gravityScale = 0;
-        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
-        life = maxLife;
-        patrolTarget = pointA;
+    rb.gravityScale = 0;
+    rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+    life = maxLife;
+    patrolTarget = pointA;
+
+    if (healthBarPrefab != null)
+    {
+        GameObject hb = Instantiate(healthBarPrefab, transform);
+        hb.transform.localPosition = new Vector3(0, 0.8f, 0); // Adjust height as needed
+        healthBarInstance = hb.GetComponent<EnemyHealthBar>();
+        if (healthBarInstance != null)
+        {
+            healthBarInstance.Initialize(maxLife);
+            healthBarInstance.SetHealth(life);
+            Debug.Log("Health bar instantiated and initialized for Bat.");
+        }
+        else
+        {
+            Debug.LogError("Health bar prefab does not have EnemyHealthBar component.");
+        }
     }
+    else
+    {
+        Debug.LogError("Health bar prefab is not assigned in BatBehaviour.");
+    }
+}
 
     private void FixedUpdate()
     {
@@ -157,7 +182,16 @@ public class BatBehaviour : MonoBehaviour, IHittableTarget
         {
             Flip((int)Mathf.Sign(rb.linearVelocity.x));
         }
+        // Fix health bar scale to prevent flipping
+        if (healthBarInstance != null)
+        {
+            Vector3 scale = healthBarInstance.transform.localScale;
+            scale.x = Mathf.Abs(scale.x);
+            healthBarInstance.transform.localScale = scale;
+        }
     }
+
+    // Removed LateUpdate to avoid redundant scaling updates and potential conflicts
 
     private void Flip(int dir)
     {
@@ -189,7 +223,7 @@ public class BatBehaviour : MonoBehaviour, IHittableTarget
     {
         if (isHurt)
         {
-            // сбрасываем атаку
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
             firstAttackDone = false;
             secondAttackDone = false;
             preAttackStarted = false;
@@ -208,7 +242,7 @@ public class BatBehaviour : MonoBehaviour, IHittableTarget
         {
             preAttackStarted = true;
             preAttackTimer = preAttackDelay;
-            SetAnimState(1); // Idle перед атакой
+            SetAnimState(1); // Idle пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
             return;
         }
 
@@ -270,26 +304,31 @@ public class BatBehaviour : MonoBehaviour, IHittableTarget
         }
     }
 
-    public void OnTakeHit(CharacterHitData hitData)
+public void OnTakeHit(CharacterHitData hitData)
+{
+    if (isHurt) return;
+
+    life -= hitData.damage;
+
+    if (life <= 0)
     {
-        if (isHurt) return;
-
-        life -= hitData.damage;
-
-        if (life <= 0)
-        {
-            SetAnimState(5); // Die
-            Destroy(gameObject, 2f); // Увеличиваем время до уничтожения
-        }
-        else
-        {
-            Vector2 hurtForce = CalculateHurtForce(hitData);
-            rb.linearVelocity = Vector2.zero;
-            rb.AddForce(hurtForce, ForceMode2D.Impulse);
-
-            StartCoroutine(PlayHurtAndInterrupt());
-        }
+        SetAnimState(5); // Die
+        Destroy(gameObject, 2f); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     }
+    else
+    {
+        Vector2 hurtForce = CalculateHurtForce(hitData);
+        rb.linearVelocity = Vector2.zero;
+        rb.AddForce(hurtForce, ForceMode2D.Impulse);
+
+        StartCoroutine(PlayHurtAndInterrupt());
+    }
+
+    if (healthBarInstance != null)
+    {
+        healthBarInstance.SetHealth(life); // Update health bar on damage
+    }
+}
 
     private Vector2 CalculateHurtForce(CharacterHitData hitData)
     {
@@ -317,7 +356,7 @@ public class BatBehaviour : MonoBehaviour, IHittableTarget
         state = State.Wait;
         waitTimer = waitDuration;
 
-        yield return new WaitForSeconds(0.1f); // Увеличиваем длительность анимации Hurt
+        yield return new WaitForSeconds(0.1f); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ Hurt
 
         isHurt = false;
 
