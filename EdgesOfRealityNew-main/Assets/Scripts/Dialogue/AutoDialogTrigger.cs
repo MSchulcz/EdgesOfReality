@@ -1,31 +1,23 @@
 using UnityEngine;
-using TMPro;
 using System.Collections;
 using UnityEngine.InputSystem;
-using Metroidvania.Characters.Knight;
+using TMPro;
 
-public class TutorialDialogTrigger : MonoBehaviour
+public class AutoDialogTrigger : MonoBehaviour
 {
     [Header("Диалоговая система")]
     public GameObject dialogUI; // Панель диалога
     public TextMeshProUGUI dialogText;
-    public UnityEngine.UI.Button nextButton;
-    public string[] dialogLines = new string[]
-    {
-        "Добро пожаловать в игру!",
-        "Используйте клавиши WASD или стрелки для перемещения.",
-        "Нажмите пробел для прыжка.",
-        "Нажмите E для взаимодействия с объектами.",
-        "Удачи в игре!"
-    };
+    public string[] dialogLines;
     public float typingSpeed = 0.05f;
+    public float delayAfterLine = 3f; // Задержка после полного отображения строки
 
     [Header("Настройки триггера")]
     public Transform player;
     public float triggerDistance = 3f;
     public bool showOnlyOnce = true;
-    public bool requireManualActivation = false; // Автоматический старт диалога
-    public Key activationKey = Key.E; // Клавиша активации (если requireManualActivation = true)
+    public bool requireManualActivation = false; // Нужно ли нажимать кнопку для старта
+    public Key activationKey = Key.E; // Клавиша активации (новая система ввода)
 
     [Header("UI для подсказки")]
     public TextMeshProUGUI promptTextUI; // UI элемент для отображения подсказки
@@ -36,16 +28,12 @@ public class TutorialDialogTrigger : MonoBehaviour
     private bool wasShown = false;
     private bool playerInRange = false;
 
-    [Header("Блокировка управления игроком")]
-    public KnightCharacterController playerController; // Ссылка на скрипт управления игроком
+    public bool isDialogLocked = false; // Новый флаг для блокировки закрытия диалога
 
     void Start()
     {
         if (dialogUI != null)
             dialogUI.SetActive(false);
-
-        if (nextButton != null)
-            nextButton.onClick.AddListener(NextLine);
 
         if (promptTextUI != null)
             promptTextUI.gameObject.SetActive(false);
@@ -69,14 +57,9 @@ public class TutorialDialogTrigger : MonoBehaviour
                 StartDialog();
             }
         }
-        else if (dialogUI.activeSelf)
+        else if (dialogUI.activeSelf && !isDialogLocked)
         {
             CloseDialog();
-        }
-
-        if (dialogUI.activeSelf && Keyboard.current != null && Keyboard.current[Key.Space].wasPressedThisFrame)
-        {
-            NextLine();
         }
 
         if (promptTextUI != null)
@@ -101,15 +84,11 @@ public class TutorialDialogTrigger : MonoBehaviour
             return;
         }
 
+        Debug.Log("AutoDialogTrigger: StartDialog called, showing dialog UI.");
         wasShown = true;
         dialogUI.SetActive(true);
         currentLine = 0;
         typingCoroutine = StartCoroutine(TypeText(dialogLines[currentLine]));
-
-        if (playerController != null)
-        {
-            playerController.enabled = false; // Блокируем управление игроком
-        }
     }
 
     IEnumerator TypeText(string line)
@@ -124,6 +103,11 @@ public class TutorialDialogTrigger : MonoBehaviour
         }
 
         isTyping = false;
+
+        // Ждём delayAfterLine секунд, затем переключаем строку
+        yield return new WaitForSeconds(delayAfterLine);
+
+        NextLine();
     }
 
     void NextLine()
@@ -150,16 +134,5 @@ public class TutorialDialogTrigger : MonoBehaviour
     void CloseDialog()
     {
         dialogUI.SetActive(false);
-
-        if (playerController != null)
-        {
-            playerController.enabled = true; // Разблокируем управление игроком
-        }
-    }
-
-    void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.cyan;
-        Gizmos.DrawWireSphere(transform.position, triggerDistance);
     }
 }

@@ -86,7 +86,7 @@ public class AdvancedDialogTrigger : MonoBehaviour
         }
     }
 
-    void StartDialog()
+    public void StartDialog()
     {
         if (dialogLines == null || dialogLines.Length == 0)
         {
