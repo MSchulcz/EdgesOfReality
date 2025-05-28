@@ -1,31 +1,24 @@
 using UnityEngine;
-using TMPro;
+using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.InputSystem;
-using Metroidvania.Characters.Knight;
+using TMPro;
 
-public class TutorialDialogTrigger : MonoBehaviour
+public class TutorialDialogController : MonoBehaviour
 {
     [Header("Диалоговая система")]
     public GameObject dialogUI; // Панель диалога
-    public TextMeshProUGUI dialogText;
-    public UnityEngine.UI.Button nextButton;
-    public string[] dialogLines = new string[]
-    {
-        "Добро пожаловать в игру!",
-        "Используйте клавиши WASD или стрелки для перемещения.",
-        "Нажмите пробел для прыжка.",
-        "Нажмите E для взаимодействия с объектами.",
-        "Удачи в игре!"
-    };
+    public Text dialogText;
+    public Button nextButton;
+    public string[] dialogLines;
     public float typingSpeed = 0.05f;
 
     [Header("Настройки триггера")]
     public Transform player;
     public float triggerDistance = 3f;
     public bool showOnlyOnce = true;
-    public bool requireManualActivation = false; // Автоматический старт диалога
-    public Key activationKey = Key.E; // Клавиша активации (если requireManualActivation = true)
+    public bool requireManualActivation = false; // Нужно ли нажимать кнопку для старта
+    public Key activationKey = Key.E; // Клавиша активации (новая система ввода)
 
     [Header("UI для подсказки")]
     public TextMeshProUGUI promptTextUI; // UI элемент для отображения подсказки
@@ -35,9 +28,6 @@ public class TutorialDialogTrigger : MonoBehaviour
     private Coroutine typingCoroutine;
     private bool wasShown = false;
     private bool playerInRange = false;
-
-    [Header("Блокировка управления игроком")]
-    public KnightCharacterController playerController; // Ссылка на скрипт управления игроком
 
     void Start()
     {
@@ -58,6 +48,7 @@ public class TutorialDialogTrigger : MonoBehaviour
         float distance = Vector3.Distance(transform.position, player.position);
         playerInRange = distance <= triggerDistance;
 
+        // Автоматический или ручной запуск
         if (playerInRange)
         {
             if (!requireManualActivation && !dialogUI.activeSelf && !(wasShown && showOnlyOnce))
@@ -74,22 +65,16 @@ public class TutorialDialogTrigger : MonoBehaviour
             CloseDialog();
         }
 
+        // Обработка пропуска диалога по пробелу
         if (dialogUI.activeSelf && Keyboard.current != null && Keyboard.current[Key.Space].wasPressedThisFrame)
         {
             NextLine();
         }
 
+        // Убрана подсказка "Нажмите F, чтобы продолжить"
         if (promptTextUI != null)
         {
-            if (playerInRange && requireManualActivation && !dialogUI.activeSelf && !(wasShown && showOnlyOnce))
-            {
-                promptTextUI.text = $"Нажмите {activationKey} для продолжения";
-                promptTextUI.gameObject.SetActive(true);
-            }
-            else
-            {
-                promptTextUI.gameObject.SetActive(false);
-            }
+            promptTextUI.gameObject.SetActive(false);
         }
     }
 
@@ -105,11 +90,6 @@ public class TutorialDialogTrigger : MonoBehaviour
         dialogUI.SetActive(true);
         currentLine = 0;
         typingCoroutine = StartCoroutine(TypeText(dialogLines[currentLine]));
-
-        if (playerController != null)
-        {
-            playerController.enabled = false; // Блокируем управление игроком
-        }
     }
 
     IEnumerator TypeText(string line)
@@ -150,16 +130,5 @@ public class TutorialDialogTrigger : MonoBehaviour
     void CloseDialog()
     {
         dialogUI.SetActive(false);
-
-        if (playerController != null)
-        {
-            playerController.enabled = true; // Разблокируем управление игроком
-        }
-    }
-
-    void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.cyan;
-        Gizmos.DrawWireSphere(transform.position, triggerDistance);
     }
 }
