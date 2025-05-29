@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1e6be1951c18c6b4c9080e0d59ba0f2b
+guid: 555d59575eaf5f34dabc91e36ab6b42f
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -60,12 +60,12 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 420
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 1
+  spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -84,7 +84,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 8192
     resizeAlgorithm: 0
     textureFormat: 4
     textureCompression: 1
@@ -128,20 +128,20 @@ TextureImporter:
       name: girl_idle_0
       rect:
         serializedVersion: 2
-        x: 1149
+        x: 1150
         y: 0
-        width: 472
-        height: 571
+        width: 471
+        height: 570
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 6857ac8371089df90800000000000000
-      internalID: -6928365714507401850
+      spriteID: 16e5820d27429c342accc0fa77c6ec33
+      internalID: 812165642
       vertices: []
       indices: 
       edges: []
@@ -160,10 +160,10 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 88b84b9f47423d930800000000000000
-      internalID: 4166714165072006024
+      spriteID: 2df936eb7aac75c43b41777387ed5654
+      internalID: 2002980522
       vertices: []
       indices: 
       edges: []
@@ -182,10 +182,10 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: f6d9630bb3e7a72b0800000000000000
-      internalID: -5586013592975139473
+      spriteID: df41279a83a7bd64ead5a713e7bc7a13
+      internalID: 861448217
       vertices: []
       indices: 
       edges: []
@@ -204,10 +204,10 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: cdf90fbab59a7dfc0800000000000000
-      internalID: -3470118776673886244
+      spriteID: d22ea2c193972b5478790b357c250c9b
+      internalID: -1843921396
       vertices: []
       indices: 
       edges: []
@@ -218,18 +218,18 @@ TextureImporter:
         serializedVersion: 2
         x: 9829
         y: 0
-        width: 472
-        height: 571
+        width: 471
+        height: 570
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 2a0be5c10437e59b0800000000000000
-      internalID: -5089503809691012958
+      spriteID: c3a3bb8ac274235408e840ce9b587c82
+      internalID: -145663719
       vertices: []
       indices: 
       edges: []
@@ -248,7 +248,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Mobile_InputBackground_0: -1144180426
+      girl_idle_0: 812165642
+      girl_idle_1: 2002980522
+      girl_idle_2: 861448217
+      girl_idle_3: -1843921396
+      girl_idle_4: -145663719
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

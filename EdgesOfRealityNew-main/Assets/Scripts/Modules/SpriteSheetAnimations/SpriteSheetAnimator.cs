@@ -21,7 +21,7 @@ namespace Metroidvania.Animations
 
         private void Update()
         {
-            if (currentSheet == null)
+            if (currentSheet == null || currentSheet.sheet == null || currentSheet.sheet.Length == 0)
                 return;
 
             elapsedTime += Time.deltaTime;
