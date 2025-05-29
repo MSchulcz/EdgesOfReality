@@ -89,6 +89,12 @@ namespace Metroidvania.Characters.Knight
         public float rollCooldown;
         public AnimationCurve rollHorizontalMoveCurve;
 
+        [Header("Air Dash")]
+        public float airDashDuration = 0.3f;
+        public float airDashSpeed = 15f;
+        public float airDashCooldown = 1.0f;
+        public float staminaConsumptionPerAirDash = 20f;
+
         [Header("Attacks")]
         public LayerMask hittableLayer;
         public float attackComboMaxDelay;

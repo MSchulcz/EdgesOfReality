@@ -13,6 +13,34 @@ namespace Metroidvania.Characters.Knight
 {
 public class KnightCharacterController : CharacterBase, ISceneTransistor, IEntityHittable
 {
+    public bool isInAirDash { get; set; } = false;
+
+    private float _lastDashInputTime = -1f;
+    private const float DashInputBufferTime = 0.2f; // seconds
+
+    private float _lastJumpInputTime = -1f;
+    private const float JumpInputBufferTime = 0.2f; // seconds
+
+    public void RegisterDashInput()
+    {
+        _lastDashInputTime = Time.time;
+    }
+
+    public bool WasDashInputBuffered()
+    {
+        return Time.time - _lastDashInputTime <= DashInputBufferTime;
+    }
+
+    public void RegisterJumpInput()
+    {
+        _lastJumpInputTime = Time.time;
+    }
+
+    public bool WasJumpInputBuffered()
+    {
+        return Time.time - _lastJumpInputTime <= JumpInputBufferTime;
+    }
+
     public void RestoreHealth(float amount)
     {
         lifeAttribute.currentValue += amount;
@@ -335,10 +363,11 @@ public void SetColliderBounds(KnightData.ColliderBounds colliderBounds)
             sfxPlayer?.PlaySFX("Jump");
         }
 
-        private void HandleDash()
-        {
-            stateMachine.currentState.HandleDash();
-        }
+private void HandleDash()
+{
+    Debug.Log($"HandleDash called in state: {stateMachine.currentState.GetType().Name}");
+    stateMachine.currentState.HandleDash();
+}
 
         private void HandleAttack()
         {

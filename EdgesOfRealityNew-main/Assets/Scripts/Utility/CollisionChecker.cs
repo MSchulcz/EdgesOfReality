@@ -55,7 +55,7 @@ namespace Metroidvania
 
         private void CheckCollision(Collision2D other)
         {
-            const float k_Bounds = 0.55f;
+            const float k_Bounds = 0.8f;
             byte collisionFlags = 0;
             foreach (var contact in other.contacts)
             {
