@@ -134,7 +134,7 @@ public class KnightJumpState : KnightStateBase
 
     public override void Transition()
     {
-        if (character.rb.linearVelocityY < 0.0f)
+        if (character.rb.linearVelocityY < 0.0f && !machine.character.isInAirDash)
             machine.EnterDefaultState();
     }
 
@@ -212,6 +212,17 @@ public class KnightJumpState : KnightStateBase
             character.rb.linearVelocityY += (character.data.jumpFallMultiplier - 1) * Physics2D.gravity.y * Time.deltaTime;
             character.FlipFacingDirection(character.horizontalMove);
         }
+
+public override void HandleDash()
+{
+    bool entered = machine.airDashState.TryEnter();
+    Debug.Log($"KnightJumpState.HandleDash: TryEnter airDashState returned {entered}");
+    if (entered)
+    {
+        machine.currentState.Exit();
+        machine.EnterState(machine.airDashState);
+    }
+}
     }
 
     public class KnightRollState : KnightStateBase

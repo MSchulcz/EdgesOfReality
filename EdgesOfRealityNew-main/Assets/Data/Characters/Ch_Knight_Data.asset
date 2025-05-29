@@ -80,7 +80,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   slideTransitionTime: 0.1
-  rollDuration: 0.75
+  rollDuration: 0.6
   rollSpeed: 8
   rollCooldown: 0.35
   rollHorizontalMoveCurve:
@@ -116,6 +116,10 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  airDashDuration: 0.3
+  airDashSpeed: 15
+  airDashCooldown: 1
+  staminaConsumptionPerAirDash: 20
   hittableLayer:
     serializedVersion: 2
     m_Bits: 640
