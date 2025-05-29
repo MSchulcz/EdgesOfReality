@@ -12,4 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41f46f301c6d21248be77c9169cd207a, type: 3}
   m_Name: Ch_Girl
   m_EditorClassIdentifier: 
-  animations: []
+  animations:
+  - name: girl_idle
+    hash: 1380810595
+    frameRate: 12
+    loop: 1
+    sheet:
+    - {fileID: 812165642, guid: 555d59575eaf5f34dabc91e36ab6b42f, type: 3}
+    - {fileID: 2002980522, guid: 555d59575eaf5f34dabc91e36ab6b42f, type: 3}
+    - {fileID: 861448217, guid: 555d59575eaf5f34dabc91e36ab6b42f, type: 3}
+    - {fileID: -1843921396, guid: 555d59575eaf5f34dabc91e36ab6b42f, type: 3}
+    - {fileID: -145663719, guid: 555d59575eaf5f34dabc91e36ab6b42f, type: 3}

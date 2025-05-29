@@ -355,9 +355,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c81a03db465ee3349b2260864e746d00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fromScene: Tutorial
-  toScene: MainMenu
-  teleportTrigger: {fileID: 1072794219}
 --- !u!1 &159348780 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4423433467414282112, guid: 11cd0fc535a25e447a5d9f0c58261dbb, type: 3}
@@ -741,6 +738,7 @@ GameObject:
   m_Component:
   - component: {fileID: 271744953}
   - component: {fileID: 271744952}
+  - component: {fileID: 271744954}
   m_Layer: 0
   m_Name: woman
   m_TagString: Untagged
@@ -773,12 +771,26 @@ Transform:
   m_GameObject: {fileID: 271744951}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 31.23591, y: 2.1959271, z: 0.03039738}
+  m_LocalPosition: {x: 33.63, y: -0.26, z: 0.03039738}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1328353453}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &271744954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 271744951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50c0f24ac5885f34ead61a365f9be7a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_gfxGameObject: {fileID: 1328353450}
 --- !u!4 &279012285 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1250856244071701927, guid: 462a6b926c58c864b8558e15f5b74fad, type: 3}
@@ -35665,6 +35677,10 @@ MonoBehaviour:
   triggerKey: 16
   triggerArea: {fileID: 434826382}
   playerTag: Player
+  spriteRenderer: {fileID: 0}
+  timer: 0
+  showingFirstSprite: 1
+  playerInTrigger: 0
 --- !u!4 &434826380
 Transform:
   m_ObjectHideFlags: 0
@@ -54998,6 +55014,10 @@ MonoBehaviour:
   triggerKey: 16
   triggerArea: {fileID: 706047472}
   playerTag: Player
+  spriteRenderer: {fileID: 0}
+  timer: 0
+  showingFirstSprite: 1
+  playerInTrigger: 0
 --- !u!4 &706047475
 Transform:
   m_ObjectHideFlags: 0
@@ -56399,11 +56419,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60573f656dc896847b7f4bd1d8c9b946, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!61 &1072794219 stripped
-BoxCollider2D:
-  m_CorrespondingSourceObject: {fileID: 3447414734016309557, guid: 94033009f6ff7b74b971c53132d11f84, type: 3}
-  m_PrefabInstance: {fileID: 1072794211}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1144154783
 GameObject:
   m_ObjectHideFlags: 0
@@ -57097,6 +57112,10 @@ MonoBehaviour:
   triggerKey: 19
   triggerArea: {fileID: 0}
   playerTag: Player
+  spriteRenderer: {fileID: 0}
+  timer: 0
+  showingFirstSprite: 1
+  playerInTrigger: 0
 --- !u!1001 &1316699677
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -57159,6 +57178,107 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2226543738134778334, guid: 55c7eaca099a1df468255f64440ef70a, type: 3}
   m_PrefabInstance: {fileID: 1316699677}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1328353450
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1328353453}
+  - component: {fileID: 1328353452}
+  - component: {fileID: 1328353451}
+  m_Layer: 0
+  m_Name: GFX
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1328353451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1328353450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e5454e198150764c841a0f5f3b25c6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AnimationsBundle: {fileID: 11400000, guid: 14be67a1361a2ad43ada71a957c07798, type: 2}
+--- !u!212 &1328353452
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1328353450}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 812165642, guid: 555d59575eaf5f34dabc91e36ab6b42f, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 14.75, y: 17.856335}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!4 &1328353453
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1328353450}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.41, y: 0.02, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 271744953}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1340626352
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -57760,6 +57880,10 @@ MonoBehaviour:
   triggerKey: 16
   triggerArea: {fileID: 1464590985}
   playerTag: Player
+  spriteRenderer: {fileID: 0}
+  timer: 0
+  showingFirstSprite: 1
+  playerInTrigger: 0
 --- !u!4 &1464590988
 Transform:
   m_ObjectHideFlags: 0
@@ -58265,6 +58389,10 @@ MonoBehaviour:
   triggerKey: 16
   triggerArea: {fileID: 1553480795}
   playerTag: Player
+  spriteRenderer: {fileID: 0}
+  timer: 0
+  showingFirstSprite: 1
+  playerInTrigger: 0
 --- !u!4 &1553480798
 Transform:
   m_ObjectHideFlags: 0
@@ -58755,6 +58883,10 @@ MonoBehaviour:
   triggerKey: 16
   triggerArea: {fileID: 1655897858}
   playerTag: Player
+  spriteRenderer: {fileID: 0}
+  timer: 0
+  showingFirstSprite: 1
+  playerInTrigger: 0
 --- !u!4 &1655897861
 Transform:
   m_ObjectHideFlags: 0
