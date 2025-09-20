@@ -2,6 +2,8 @@
 
 **“Захватываем реальность, творим мечты!”**
 
+<img width="451" height="452" alt="Снимок (2)" src="https://github.com/user-attachments/assets/bad8c3db-3bcb-4634-ba86-c8078d934404" />
+
 ---
 
 ## 🎮 Описание
@@ -31,6 +33,8 @@
 Лукас — обычный бухгалтер, но внутри него кипит жажда большего.  
 Во сне он сталкивается с чудовищами, символизирующими его страхи и сомнения. Чтобы выбраться из кошмаров и обрести свободу, ему предстоит пройти через **Грани Реальности**.
 
+<img width="405" height="407" alt="Снимок" src="https://github.com/user-attachments/assets/148b5225-ac5e-4ed7-87bd-4766ffd1cba7" />
+
 ---
 
 ## 👥 Команда KAPKan
@@ -55,7 +59,13 @@
 
 ## 🖼️ Скриншоты и материалы
 
-*(Раздел в разработке — здесь будут скриншоты, арты и трейлеры игры)*
+<img width="3630" height="1980" alt="Грани реальности   Визитка  (2)" src="https://github.com/user-attachments/assets/42a622e1-89d6-4103-8f0d-7b60768a26ce" />
+<img width="1914" height="1080" alt="CleanShot 2025-09-20 at 19 33 24@2x" src="https://github.com/user-attachments/assets/e91d4141-de0b-48f1-978b-8e2608a69bd5" />
+<img width="1914" height="1080" alt="CleanShot 2025-09-20 at 19 33 50@2x" src="https://github.com/user-attachments/assets/091110e0-8c2a-42c7-843d-a94ec2c14aea" />
+<img width="1914" height="1080" alt="CleanShot 2025-09-20 at 19 35 14@2x" src="https://github.com/user-attachments/assets/e3bc9c27-f86d-40ca-b682-0298c072d387" />
+<img width="1914" height="1080" alt="CleanShot 2025-09-20 at 19 35 51@2x" src="https://github.com/user-attachments/assets/06012478-d261-4d1b-beb9-d5a5d750b42b" />
+<img width="1914" height="1080" alt="CleanShot 2025-09-20 at 19 37 53@2x" src="https://github.com/user-attachments/assets/e431a70e-b96a-4eeb-878c-560c938f1150" />
+<img width="1914" height="1080" alt="CleanShot 2025-09-20 at 19 38 52@2x" src="https://github.com/user-attachments/assets/075ee4ed-d753-4bc9-8e0e-5958f174518e" />
 
 ---
 
